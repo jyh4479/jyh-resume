@@ -18,7 +18,7 @@ const PageContainer = (props) => {
     return (
         <BackGround color={theme.backGround}>
             <FixedBox top={5} right={5}>
-                <ToggleButton onClick={onChangeTheme}/>
+                <ToggleButton color={theme.button} onClick={onChangeTheme}/>
             </FixedBox>
             {children}
         </BackGround>

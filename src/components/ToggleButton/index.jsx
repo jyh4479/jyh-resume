@@ -5,7 +5,7 @@ import Moon from "@/assets/moon.svg";
 
 const ToggleButton = (props) => {
 
-    const {onClick = isTrue => null} = props;
+    const {color, onClick = isTrue => null} = props;
 
     const [isTrue, setIsTrue] = useState(false);
 
@@ -17,7 +17,7 @@ const ToggleButton = (props) => {
     }
 
     return (
-        <ButtonBox onClick={check}>
+        <ButtonBox color={color} onClick={check}>
             <ButtonBllBox checked={isTrue}>
                 <img src={isTrue ? Moon : Sun}/>
                 {/*<ButtonBall/>*/}
@@ -33,7 +33,7 @@ const ButtonBox = styled.div`
   width: 60px;
   height: 30px;
   border-radius: 80px;
-  border: 3px solid #888888;
+  border: 3px solid ${props => props.color ? props.color : "#888888"};
   cursor: pointer;
 
   &:active > div > div {
