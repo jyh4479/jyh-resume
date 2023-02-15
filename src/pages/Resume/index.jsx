@@ -4,7 +4,6 @@ import {PageContainer} from "@/containers/index.js";
 
 const Resume = (props) => {
 
-
     return (
         <PageContainer>
         </PageContainer>

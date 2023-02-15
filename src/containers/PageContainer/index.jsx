@@ -17,7 +17,9 @@ const PageContainer = (props) => {
 
     return (
         <BackGround color={theme.backGround}>
-            <ToggleButton onClick={onChangeTheme}/>
+            <FixedBox top={5} right={5}>
+                <ToggleButton onClick={onChangeTheme}/>
+            </FixedBox>
             {children}
         </BackGround>
     )
@@ -29,4 +31,10 @@ const BackGround = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${props => props.color}
+`
+
+const FixedBox = styled.div`
+  position: absolute;
+  top: ${props => props.top}px;
+  right: ${props => props.right}px;
 `
