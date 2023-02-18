@@ -6,4 +6,6 @@ export const Text = styled.span`
   //font-family: Pretendard;
   font-family: Maplestory-light;
   font-size: ${props => props.size}px;
+  color: ${props => props.color};
+  user-select: none;
 `
