@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from "@emotion/styled";
-import Sun from "@/assets/sun.svg";
-import Moon from "@/assets/moon.svg";
+import Sun from "@/assets/svg/sun.svg";
+import Moon from "@/assets/svg/moon.svg";
 
 const ToggleButton = (props) => {
 

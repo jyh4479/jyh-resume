@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Maplestory-light';
+    font-weight: 900;
+    font-display: swap;
+    src: url("Maplestory Light.ttf");
+}
+
+@font-face {
+    font-family: 'Maplestory-blod';
+    font-weight: 900;
+    font-display: swap;
+    src: url("Maplestory Bold.ttf");
+}

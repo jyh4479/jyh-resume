@@ -1,7 +1,6 @@
 export class LightTheme {
-    backGround = "#F0F0D0";
-    button = "#66CCDD";
-    // #FFC079
+    backGround = "#FFFAF0";
+    button = "#AAD8E6";
     main = "";
 
 }
