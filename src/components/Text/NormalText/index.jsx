@@ -5,7 +5,7 @@ const NormalText = (props) => {
 
     const {children, size, color = "#000000"} = props;
 
-    return <Text size={size} color={color}>{children}</Text>;
+    return <Text {...props}>{children}</Text>;
 }
 
 export default NormalText;

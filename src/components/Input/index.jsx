@@ -1,9 +1,13 @@
 import React from 'react';
+import styled from "@emotion/styled";
 
 const Input = (props) => {
-    return(
-        <div>input</div>
-    )
+
+    return <InputStyle {...props}/>
 }
 
 export default Input;
+
+const InputStyle = styled.input`
+
+`
