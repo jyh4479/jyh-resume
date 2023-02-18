@@ -19,7 +19,7 @@ const ToggleButton = (props) => {
     return (
         <ButtonBox color={color} onClick={check}>
             <ButtonBllBox checked={isTrue}>
-                <img src={isTrue ? Moon : Sun}/>
+                <ButtonImage src={isTrue ? Moon : Sun}/>
                 {/*<ButtonBall/>*/}
             </ButtonBllBox>
         </ButtonBox>
@@ -39,6 +39,8 @@ const ButtonBox = styled.div`
   &:active > div > div {
     transform: scale(0.95);
   }
+  
+  z-index: 9999;
 `
 
 const ButtonBllBox = styled.div`
@@ -52,6 +54,10 @@ const ButtonBllBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`
+
+const ButtonImage = styled.img`
+  user-select: none;
 `
 
 const ButtonBall = styled.div`

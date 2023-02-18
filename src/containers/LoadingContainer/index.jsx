@@ -11,7 +11,7 @@ const LoadingContainer = (props) => {
 
     const [loading, setLoading] = useState(true);
     const [percent, setPercent] = useState(0);
-    const [delay, setDelay] = useState(50);
+    const [delay, setDelay] = useState(35);
     const theme = useRecoilValue(themeState);
 
     useInterval(() => {
@@ -25,7 +25,7 @@ const LoadingContainer = (props) => {
     return (
         loading
             ?
-            <BlurContainer opacity={(100 - percent) / 100}>
+            <BlurContainer opacity={(100 - percent) / 100} display={percent === 100}>
                 <Loading percent={percent} color={theme.button}/>
             </BlurContainer>
             :
@@ -45,7 +45,7 @@ const BlurContainer = styled.div`
   width: 100vw;
   height: 100vh;
 
-  display: flex;
+  display: ${props => props.display ? "none" : "flex"};
   align-items: center;
   justify-content: center;
 
