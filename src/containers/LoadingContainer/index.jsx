@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styled from "@emotion/styled";
 import Loading from "@/components/Loading/index.jsx";
 import {useRecoilValue} from "recoil";
-import {themeState} from "@/stores/Theme/index.js";
+import {themeState} from "@/stores/Theme";
 import {useInterval} from "@/hooks/useInterval.js";
 
 const LoadingContainer = (props) => {
@@ -19,7 +19,10 @@ const LoadingContainer = (props) => {
     }, delay)
 
     useEffect(() => {
-        if (percent === 100) setDelay(null);
+        if (percent === 100) {
+            setDelay(null);
+            setLoading(false);
+        }
     }, [percent])
 
     return (

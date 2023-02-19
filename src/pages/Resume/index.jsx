@@ -1,6 +1,5 @@
 import React from 'react';
-import ToggleButton from "@/components/ToggleButton/index.jsx";
-import {PageContainer, LoadingContainer, TitleTextContainer} from "@/containers/index.js";
+import {EducationContainer, LoadingContainer, PageContainer, TitleTextContainer} from "@/containers/index.js";
 
 const Resume = (props) => {
 
@@ -8,7 +7,7 @@ const Resume = (props) => {
         <PageContainer>
             <TitleTextContainer/>
             <LoadingContainer>
-                <div>loading complete!</div>
+                <EducationContainer/>
             </LoadingContainer>
         </PageContainer>
     )

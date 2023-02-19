@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import styled from "@emotion/styled";
-import {NormalText} from "@/components/Text";
 import {useRecoilValue} from "recoil";
-import {themeState} from "@/stores/Theme/index.js";
+import {themeState} from "@/stores/Theme";
+import BounceText from "@/components/Text/BounceText";
 
 const TitleTextContainer = (props) => {
 
-    const [title, setTitle] = useState("Front end 개발자 정용훈!");
+    const [title, setTitle] = useState("Software developer!");
     const theme = useRecoilValue(themeState);
 
     return (
         <ContainerLayout>
-            <NormalText size={90} color={theme.main}>{title}</NormalText>
+            <BounceText size={90} color={theme.main}>{title}</BounceText>
         </ContainerLayout>
     )
 }
@@ -25,4 +25,5 @@ const ContainerLayout = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `

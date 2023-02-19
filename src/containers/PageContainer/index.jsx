@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "@emotion/styled";
 import {ToggleButton} from "@/components";
 import {useRecoilState} from "recoil";
-import {themeState} from "@/stores/Theme/index.js";
+import {themeState} from "@/stores/Theme";
 import {DarkTheme} from "@/constants/themes/DarkTheme.js";
 import {LightTheme} from "@/constants/themes/LightTheme.js";
 
@@ -18,7 +18,7 @@ const PageContainer = (props) => {
     return (
         <BackGround color={theme.backGround}>
             <FixedBox top={5} right={5}>
-                <ToggleButton color={theme.button} onClick={onChangeTheme}/>
+                <ToggleButton defaultValue={theme.themeName !== "Light"} color={theme.button} onClick={onChangeTheme}/>
             </FixedBox>
             {children}
         </BackGround>
@@ -34,7 +34,7 @@ const BackGround = styled.div`
 `
 
 const FixedBox = styled.div`
-  position: absolute;
+  position: fixed;
   top: ${props => props.top}px;
   right: ${props => props.right}px;
 `

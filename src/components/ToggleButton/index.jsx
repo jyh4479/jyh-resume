@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import styled from "@emotion/styled";
 import Sun from "@/assets/svg/sun.svg";
 import Moon from "@/assets/svg/moon.svg";
+import {isNil} from "lodash";
 
 const ToggleButton = (props) => {
 
-    const {color, onClick = isTrue => null} = props;
+    const {defaultValue, color, onClick = isTrue => null} = props;
 
-    const [isTrue, setIsTrue] = useState(false);
+    const [isTrue, setIsTrue] = useState(!isNil(defaultValue) ? defaultValue : false);
 
     const check = (e) => {
         setIsTrue(prev => {
@@ -39,7 +40,7 @@ const ButtonBox = styled.div`
   &:active > div > div {
     transform: scale(0.95);
   }
-  
+
   z-index: 9999;
 `
 
