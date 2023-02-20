@@ -33,18 +33,36 @@ export default BounceText;
 const BounceCharacter = styled.span`
   display: inline-block;
 
-  animation: wave 1s linear infinite;
-  animation-delay: ${props => props.delay}ms;
+  //@keyframes wave {
+  //  0% {
+  //    transform: translateY(0px);
+  //  }
+  //  50% {
+  //    transform: translateY(-40px);
+  //  }
+  //  100% {
+  //    transform: translateY(0px);
+  //  }
+  //}
 
-  @keyframes wave {
+  @keyframes shake {
     0% {
-      transform: translateY(0px);
+      transform: rotate(0deg)
+    }
+    25% {
+      transform: rotate(-15deg)
     }
     50% {
-      transform: translateY(-40px);
+      transform: rotate(0deg)
+    }
+    75% {
+      transform: rotate(15deg)
     }
     100% {
-      transform: translateY(0px);
+      transform: rotate(0deg)
     }
   }
+
+  animation: shake 1s linear infinite;
+  animation-delay: ${props => props.delay}ms;
 `
