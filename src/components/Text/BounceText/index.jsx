@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import styled from "@emotion/styled";
 import {Text} from "../style"
-import {isEmpty} from "lodash";
 
 const BounceText = (props) => {
 
