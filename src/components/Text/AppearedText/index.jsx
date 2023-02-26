@@ -4,7 +4,7 @@ import {Text} from "../style"
 
 const AppearedText = (props) => {
 
-    const {children, size, color, move = 0} = props;
+    const {children, size, color} = props;
 
     const textRef = useRef();
 
