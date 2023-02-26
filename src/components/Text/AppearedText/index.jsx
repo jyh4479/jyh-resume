@@ -4,7 +4,7 @@ import {Text} from "../style"
 
 const AppearedText = (props) => {
 
-    const {children, direction = 'left', size, color} = props;
+    const {children, size, color, move = 0} = props;
 
     const textRef = useRef();
 
@@ -18,12 +18,13 @@ const AppearedText = (props) => {
         domObserver.observe(textRef.current);
     }, [])
 
-    return <AppearedTextStyle ref={textRef}>{children}</AppearedTextStyle>
+    return <AppearedTextStyle ref={textRef} size={size} color={color}>{children}</AppearedTextStyle>
 }
 
 export default AppearedText;
 
 const AppearedTextStyle = styled(Text)`
   opacity: 0;
-  transition: opacity 3s ease-in;
+  margin: 10px;
+  transition: opacity 1s ease-in;
 `
