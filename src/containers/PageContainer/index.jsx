@@ -37,4 +37,6 @@ const FixedBox = styled.div`
   position: fixed;
   top: ${props => props.top}px;
   right: ${props => props.right}px;
+  
+  z-index: 9999;
 `
