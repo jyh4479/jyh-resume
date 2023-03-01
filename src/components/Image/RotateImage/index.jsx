@@ -44,6 +44,7 @@ const RotateImageContent = (props) => {
 
 RotateImage.Content = RotateImageContent;
 
+//TODO: Animation 수정하기
 export default RotateImage;
 
 const ImageContentBox = styled.div`
