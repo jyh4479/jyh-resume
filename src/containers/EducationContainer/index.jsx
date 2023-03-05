@@ -50,7 +50,7 @@ const EducationContainer = (props) => {
                     </FlyingComponentBox>
                 </BottomTitleContentBox>
                 <BottomImageContentBox>
-                    <RotateImage>
+                    <RotateImage direction={"up"}>
                         <RotateImage.Content src={SCHOOL} width={300} color={theme.button}/>
                         <RotateImage.Content src={DORMITORY} width={300} color={theme.button}/>
                         <RotateImage.Content src={SCHOOL} width={300} color={theme.button}/>

@@ -30,7 +30,10 @@ export default PageContainer;
 const BackGround = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${props => props.color}
+  background-color: ${props => props.color};
+  
+  overflow-x: hidden;
+  overflow-y: scroll;
 `
 
 const FixedBox = styled.div`
