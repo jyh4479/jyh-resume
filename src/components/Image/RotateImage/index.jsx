@@ -73,4 +73,6 @@ const ImageContent = styled.img`
   }
 
   transition: transform ease-in-out 0.5s;
+  
+  user-select: none;
 `
