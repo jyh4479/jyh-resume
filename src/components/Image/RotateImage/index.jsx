@@ -69,8 +69,8 @@ const ImageContent = styled.img`
   transform: ${props => props.open ? `translateY(${(parseInt(props.index / 2) * (props.direction === "up" ? -120 : 120)) - 50}%) translateX(${((props.index + 1) % 2) * 110}%) rotate(${0}deg)` : `translateY(-50%) rotate(${props.index * 5}deg)`};
 
   &:active {
-    transform: ${props => props.open ? `translateY(-50%) scale(0.98) rotate(${0}deg)` : `scale(0.98) translateY(-50%) rotate(${props.index * 5}deg)`};
+    transform: ${props => props.open ? `translateY(${(parseInt(props.index / 2) * (props.direction === "up" ? -120 : 120)) - 50}%) translateX(${((props.index + 1) % 2) * 110}%) rotate(${0}deg)` : `translateY(-50%) rotate(${props.index * 5}deg)`};
   }
 
-  transition: all ease-in-out 1s;
+  transition: transform ease-in-out 0.5s;
 `
