@@ -13,6 +13,7 @@ const EducationContainer = (props) => {
 
     const theme = useRecoilValue(themeState);
 
+    //https://codepen.io/Raphael/pen/DyRXLj 눈 내리는 css
     return (
         <ContainerLayout color={theme.backGround}>
             <ContentBox>
