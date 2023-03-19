@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useEffect, useRef, useState} from "react";
 import styled from "@emotion/styled";
+import {useChildIndex} from "@/hooks/useChildIndex.js";
 
 const RotateImageContext = createContext();
 
@@ -21,16 +22,9 @@ const RotateImage = (props) => {
 
 const RotateImageContent = (props) => {
     const {open, setOpen, parent, direction} = useContext(RotateImageContext);
-
-    const [index, setIndex] = useState(null);
-
     const child = useRef();
 
-    useEffect(() => {
-        const childNodes = parent.current.childNodes;
-        const index = Array.prototype.indexOf.call(childNodes, child.current);
-        setIndex(index);
-    }, [])
+    const index = useChildIndex(parent, child);
 
     return (
         <ImageContent
@@ -72,6 +66,6 @@ const ImageContent = styled.img`
   }
 
   transition: transform ease-in-out 0.5s;
-  
+
   user-select: none;
 `
