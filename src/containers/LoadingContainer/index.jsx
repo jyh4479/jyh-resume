@@ -28,7 +28,7 @@ const LoadingContainer = (props) => {
     return (
         loading
             ?
-            <BlurContainer opacity={(100 - percent) / 100} display={percent === 100}>
+            <BlurContainer opacity={(100 - percent) / 100} display={percent === 100 ? "none" : "flex"}>
                 <Loading percent={percent} color={theme.button}/>
             </BlurContainer>
             :
@@ -48,7 +48,7 @@ const BlurContainer = styled.div`
   width: 100vw;
   height: 100vh;
 
-  display: ${props => props.display ? "none" : "flex"};
+  display: ${props => props.display};
   align-items: center;
   justify-content: center;
 
