@@ -12,7 +12,21 @@ const CareerContainer = (props) => {
         <ContainerLayout color={theme.backGround}>
             <TimeContentBox>
                 <CareerHistory>
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.TextBox>
+                            <CareerHistory.Title/>
+                            <CareerHistory.Text/>
+                        </CareerHistory.TextBox>
+                    </CareerHistory.Content>
 
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.TextBox>
+                            <CareerHistory.Title/>
+                            <CareerHistory.Text/>
+                        </CareerHistory.TextBox>
+                    </CareerHistory.Content>
                 </CareerHistory>
             </TimeContentBox>
         </ContainerLayout>
