@@ -14,18 +14,14 @@ const CareerContainer = (props) => {
                 <CareerHistory>
                     <CareerHistory.Content>
                         <CareerHistory.Image/>
-                        <CareerHistory.TextBox>
-                            <CareerHistory.Title/>
-                            <CareerHistory.Text/>
-                        </CareerHistory.TextBox>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
                     </CareerHistory.Content>
 
                     <CareerHistory.Content>
                         <CareerHistory.Image/>
-                        <CareerHistory.TextBox>
-                            <CareerHistory.Title/>
-                            <CareerHistory.Text/>
-                        </CareerHistory.TextBox>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
                     </CareerHistory.Content>
                 </CareerHistory>
             </TimeContentBox>

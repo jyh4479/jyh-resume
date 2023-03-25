@@ -7,9 +7,6 @@ const CONTENT_HEIGHT = 400;
 const TEXT_BOX_WIDTH = 300;
 const TEXT_BOX_HEIGHT = 200;
 
-
-//TODO: Line component가 children을 포함하고 있으면 안될것같음
-
 const CareerHistory = (props) => {
 
     const {children} = props;
@@ -42,17 +39,6 @@ const CareerHistoryContent = (props) => {
     )
 }
 
-const CareerHistoryTextBox = (props) => {
-
-    const {children} = props;
-
-    return (
-        <TextBox>
-            {children}
-        </TextBox>
-    )
-}
-
 const CareerHistoryImage = () => {
     return (
         <div></div>
@@ -72,7 +58,6 @@ const CareerHistoryText = () => {
 
 CareerHistory.Content = CareerHistoryContent;
 CareerHistory.Image = CareerHistoryImage;
-CareerHistory.TextBox = CareerHistoryTextBox;
 CareerHistory.Title = CareerHistoryTitle;
 CareerHistory.Text = CareerHistoryText;
 
@@ -139,11 +124,11 @@ const DirectionLineContentBox = styled.div`
 
 const ContentBox = styled.div`
   position: relative;
-  
+
   width: ${CONTENT_WIDTH}px;
   height: ${CONTENT_HEIGHT}px;
   background-color: red;
-  
+
   opacity: 0.5;
 `
 
@@ -152,7 +137,7 @@ const TextBox = styled.div`
 
   width: ${TEXT_BOX_WIDTH}px;
   height: ${TEXT_BOX_HEIGHT}px;
-  
+
   background-color: #213547;
   opacity: 0.5;
 `
