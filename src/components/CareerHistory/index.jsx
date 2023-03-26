@@ -114,7 +114,9 @@ const DirectionLine = styled.div`
 
 const DirectionLineContentBox = styled.div`
   position: absolute;
-
+  
+  height: 100%;
+  
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -126,22 +128,17 @@ const ContentBox = styled.div`
   position: relative;
 
   width: ${CONTENT_WIDTH}px;
-  height: ${CONTENT_HEIGHT}px;
-  background-color: red;
+
+  height: 50%;
+
+  &:nth-of-type(even) {
+    background-color: red;
+    top: 50%;
+  }
+
+  &:nth-of-type(odd) {
+    background-color: blue;
+  }
 
   opacity: 0.5;
 `
-
-const TextBox = styled.div`
-  position: absolute;
-
-  width: ${TEXT_BOX_WIDTH}px;
-  height: ${TEXT_BOX_HEIGHT}px;
-
-  background-color: #213547;
-  opacity: 0.5;
-`
-
-const ImageBox = styled.img`
-`
-
