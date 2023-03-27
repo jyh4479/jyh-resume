@@ -9,27 +9,32 @@ const CareerContainer = (props) => {
     const theme = useRecoilValue(themeState);
 
     const cardBoxRef = useRef(null);
+    
 
     useEffect(() => {
 
-        window.addEventListener("wheel", function () {
-            if (cardBoxRef.current.getBoundingClientRect().top < 3 && cardBoxRef.current.getBoundingClientRect().top > -3) console.log("상단임")
-        }, false);
+        const scrollEvent = () => {
 
-        window.addEventListener("scroll", function () {
-            console.log(123);
-        }, false);
+            console.log(cardBoxRef.current.getBoundingClientRect().top)
 
-        // const domObserver = new IntersectionObserver(e => {
-        //     e.forEach(cardBox => {
-        //         console.log(cardBox.target.getBoundingClientRect().top)
-        //         if (cardBox.target.getBoundingClientRect().top === 0) {
-        //             console.log(cardBox.target.getBoundingClientRect().top)
-        //             console.log("상단이여")
-        //         }
-        //     })
-        // });
-        // domObserver.observe(cardBoxRef.current);
+            if (cardBoxRef.current.getBoundingClientRect().top <= 0) {
+                cardBoxRef.current.style.position = "fixed";
+                cardBoxRef.current.style.left = "50%";
+                cardBoxRef.current.style.top = 0;
+                cardBoxRef.current.style.transform = "translate(-50%)";
+            } else {
+                cardBoxRef.current.style.position = "static";
+                cardBoxRef.current.style.transform = "none";
+            }
+        }
+
+        window.addEventListener("wheel", scrollEvent, false);
+        window.addEventListener("scroll", scrollEvent, false);
+
+        return () => {
+            window.removeEventListener("wheel", scrollEvent);
+            window.removeEventListener("scroll", scrollEvent);
+        }
     }, [])
 
     return (<ContainerLayout color={theme.backGround}>
@@ -65,9 +70,12 @@ const CareerContainer = (props) => {
             {/*https://campaign.naver.com/naverhyundaicard/?eventCode=NAV08&dtm_source=naver_brandsearch&dtm_medium=search&dtm_campaign=naverhcard&pcode=naver_brandsearch_graffiti_main_img*/}
             {/* 참고 */}
 
-            <TEST ref={cardBoxRef}>
-                123
-            </TEST>
+            <TEST_CONTAINER>
+                <TEST ref={cardBoxRef}>
+                    123
+                </TEST>
+            </TEST_CONTAINER>
+
         </CardContentBox>
     </ContainerLayout>)
 }
@@ -93,6 +101,8 @@ const TimeContentBox = styled.div`
 `
 
 const CardContentBox = styled.div`
+  position: relative;
+
   width: 100%;
   height: 60%;
 
@@ -103,9 +113,16 @@ const CardContentBox = styled.div`
 
 `
 
-const TEST = styled.div`
+const TEST_CONTAINER = styled.div`
   width: 100px;
   height: 6000px;
+
+  background-color: blanchedalmond;
+`
+
+const TEST = styled.div`
+  width: 100px;
+  height: 100px;
 
   background-color: red;
 `
