@@ -8,23 +8,27 @@ const CareerContainer = (props) => {
 
     const theme = useRecoilValue(themeState);
 
-    const cardBoxRef = useRef(null);
-    
+    const cardBoxRefs = useRef([]);
+    const cardContainer = useRef(null);
+
 
     useEffect(() => {
 
         const scrollEvent = () => {
 
-            console.log(cardBoxRef.current.getBoundingClientRect().top)
+            if (cardContainer.current.getBoundingClientRect().top > 0) {
+                cardBoxRefs.current[0].style.position = "static";
+                cardBoxRefs.current[0].style.transform = "none";
+                cardBoxRefs.current[0].style.marginTop = "50%";
+                return;
+            }
 
-            if (cardBoxRef.current.getBoundingClientRect().top <= 0) {
-                cardBoxRef.current.style.position = "fixed";
-                cardBoxRef.current.style.left = "50%";
-                cardBoxRef.current.style.top = 0;
-                cardBoxRef.current.style.transform = "translate(-50%)";
-            } else {
-                cardBoxRef.current.style.position = "static";
-                cardBoxRef.current.style.transform = "none";
+            if (cardContainer.current.getBoundingClientRect().top <= 0) {
+                cardBoxRefs.current[0].style.position = "fixed";
+                cardBoxRefs.current[0].style.marginTop = 0;
+                cardBoxRefs.current[0].style.left = "50%";
+                cardBoxRefs.current[0].style.top = "26%";
+                cardBoxRefs.current[0].style.transform = "translate(-50%)";
             }
         }
 
@@ -70,9 +74,15 @@ const CareerContainer = (props) => {
             {/*https://campaign.naver.com/naverhyundaicard/?eventCode=NAV08&dtm_source=naver_brandsearch&dtm_medium=search&dtm_campaign=naverhcard&pcode=naver_brandsearch_graffiti_main_img*/}
             {/* 참고 */}
 
-            <TEST_CONTAINER>
-                <TEST ref={cardBoxRef}>
+            <TEST_CONTAINER ref={cardContainer}>
+                <TEST ref={el => cardBoxRefs.current[0] = el}>
                     123
+                </TEST>
+                <TEST ref={el => cardBoxRefs.current[1] = el}>
+                    456
+                </TEST>
+                <TEST ref={el => cardBoxRefs.current[2] = el}>
+                    789
                 </TEST>
             </TEST_CONTAINER>
 
@@ -114,13 +124,19 @@ const CardContentBox = styled.div`
 `
 
 const TEST_CONTAINER = styled.div`
-  width: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  width: 50%;
   height: 6000px;
 
   background-color: blanchedalmond;
 `
 
 const TEST = styled.div`
+  margin-top: 50%;
+
   width: 100px;
   height: 100px;
 
