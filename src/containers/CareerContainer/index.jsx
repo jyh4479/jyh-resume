@@ -27,8 +27,15 @@ const CareerContainer = (props) => {
                 cardBoxRefs.current[0].style.position = "fixed";
                 cardBoxRefs.current[0].style.marginTop = 0;
                 cardBoxRefs.current[0].style.left = "50%";
-                cardBoxRefs.current[0].style.top = "26%";
+                cardBoxRefs.current[0].style.top = "45%";
                 cardBoxRefs.current[0].style.transform = "translate(-50%)";
+
+                const targetIndex = parseInt(cardContainer.current.getBoundingClientRect().top / -200) + 1;
+                const move = parseInt(cardContainer.current.getBoundingClientRect().top / -30);
+
+                // console.log(move);
+
+                cardBoxRefs.current[targetIndex].style.top = `${100 - move}%`;
             }
         }
 
@@ -135,10 +142,26 @@ const TEST_CONTAINER = styled.div`
 `
 
 const TEST = styled.div`
-  margin-top: 50%;
+  position: fixed;
 
   width: 100px;
   height: 100px;
 
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%);
+
+  //visibility: hidden;
+  //opacity: 0;
+
+  &:nth-of-type(1) {
+    position: static;
+    margin-top: 50%;
+    visibility: visible;
+    opacity: 1;
+  }
+
   background-color: red;
+
+  border: 10px solid black;
 `
