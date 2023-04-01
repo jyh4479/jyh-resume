@@ -17,9 +17,16 @@ const CareerContainer = (props) => {
         const scrollEvent = () => {
 
             if (cardContainer.current.getBoundingClientRect().top > 0) {
-                cardBoxRefs.current[0].style.position = "static";
-                cardBoxRefs.current[0].style.transform = "none";
-                cardBoxRefs.current[0].style.marginTop = "50%";
+                cardBoxRefs.current.forEach((current, index) => {
+                    if (index === 0) {
+                        current.style.position = "static";
+                        current.style.transform = "none";
+                        current.style.marginTop = "50%";
+                    } else {
+                        current.style.position = "fixed";
+                        current.style.top = "100%";
+                    }
+                })
                 return;
             }
 
@@ -30,12 +37,15 @@ const CareerContainer = (props) => {
                 cardBoxRefs.current[0].style.top = "45%";
                 cardBoxRefs.current[0].style.transform = "translate(-50%)";
 
-                const targetIndex = parseInt(cardContainer.current.getBoundingClientRect().top / -200) + 1;
-                const move = parseInt(cardContainer.current.getBoundingClientRect().top / -30);
+                const move = cardContainer.current.getBoundingClientRect().top / 5;
+                const top = 100 + move;
+                const targetIndex = (parseInt(-move / 55)) + 1;
 
-                // console.log(move);
 
-                cardBoxRefs.current[targetIndex].style.top = `${100 - move}%`;
+                //TODO: validation 함수화
+                if (0 < targetIndex - 1 && targetIndex - 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex - 1].style.top = "45%";
+                if (0 < targetIndex + 1 && targetIndex + 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex + 1].style.top = "100%";
+                if (0 < targetIndex && targetIndex < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex].style.top = `${top + (55 * (targetIndex - 1))}%`;
             }
         }
 
