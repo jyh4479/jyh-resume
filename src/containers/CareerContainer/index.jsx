@@ -99,7 +99,7 @@ const CareerContainer = (props) => {
             </TimeContentBox>
             <CardContentBox>
                 <CardContentScrollBox ref={cardContainer}>
-                    //FIXME: ref 이름 그대로 props로 넘길 수 없음
+                    {/*FIXME: ref 이름 그대로 props로 넘길 수 없음*/}
                     <CardContent cardRef={el => cardBoxRefs.current[0] = el}>
                         123
                     </CardContent>
