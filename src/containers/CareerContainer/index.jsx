@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import styled from "@emotion/styled";
 import {useRecoilValue} from "recoil";
 import {themeState} from "@/stores/Theme/index.js";
-import {CareerHistory} from "@/components";
+import {Card, CareerHistory} from "@/components";
 
 const CareerContainer = (props) => {
 
@@ -16,12 +16,16 @@ const CareerContainer = (props) => {
 
         const scrollEvent = () => {
 
+            const TOP_POSITION = 20;
+            const BOTTOM_POSITION = 100;
+            const REVERSE_TOP_POSITION = BOTTOM_POSITION - TOP_POSITION;
+
             if (cardContainer.current.getBoundingClientRect().top > 0) {
                 cardBoxRefs.current.forEach((current, index) => {
                     if (index === 0) {
                         current.style.position = "static";
                         current.style.transform = "none";
-                        current.style.marginTop = "50%";
+                        current.style.marginTop = "22%";
                     } else {
                         current.style.position = "fixed";
                         current.style.top = "100%";
@@ -34,18 +38,23 @@ const CareerContainer = (props) => {
                 cardBoxRefs.current[0].style.position = "fixed";
                 cardBoxRefs.current[0].style.marginTop = 0;
                 cardBoxRefs.current[0].style.left = "50%";
-                cardBoxRefs.current[0].style.top = "45%";
+                cardBoxRefs.current[0].style.top = `${TOP_POSITION}%`;
                 cardBoxRefs.current[0].style.transform = "translate(-50%)";
 
-                const move = cardContainer.current.getBoundingClientRect().top / 5;
-                const top = 100 + move;
-                const targetIndex = (parseInt(-move / 55)) + 1;
+                //The move number by scroll event
+                const move = cardContainer.current.getBoundingClientRect().top / 25;
+
+                //Current animation box top position
+                const top = BOTTOM_POSITION + move;
+
+                //Current target component index
+                const targetIndex = (parseInt(-move / REVERSE_TOP_POSITION)) + 1;
 
 
                 //TODO: validation 함수화
-                if (0 < targetIndex - 1 && targetIndex - 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex - 1].style.top = "45%";
+                if (0 < targetIndex - 1 && targetIndex - 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex - 1].style.top = `${TOP_POSITION}%`;
                 if (0 < targetIndex + 1 && targetIndex + 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex + 1].style.top = "100%";
-                if (0 < targetIndex && targetIndex < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex].style.top = `${top + (55 * (targetIndex - 1))}%`;
+                if (0 < targetIndex && targetIndex < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex].style.top = `${top + (REVERSE_TOP_POSITION * (targetIndex - 1))}%`;
             }
         }
 
@@ -56,55 +65,54 @@ const CareerContainer = (props) => {
             window.removeEventListener("wheel", scrollEvent);
             window.removeEventListener("scroll", scrollEvent);
         }
-    }, [])
+    }, [cardBoxRefs.current])
 
-    return (<ContainerLayout color={theme.backGround}>
-        <TimeContentBox>
-            <CareerHistory>
+    return (
+        <ContainerLayout color={theme.backGround}>
+            <TimeContentBox>
+                <CareerHistory>
 
-                <CareerHistory.Content>
-                    <CareerHistory.Image/>
-                    <CareerHistory.Title/>
-                    <CareerHistory.Text/>
-                </CareerHistory.Content>
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
+                    </CareerHistory.Content>
 
-                <CareerHistory.Content>
-                    <CareerHistory.Image/>
-                    <CareerHistory.Title/>
-                    <CareerHistory.Text/>
-                </CareerHistory.Content>
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
+                    </CareerHistory.Content>
 
-                <CareerHistory.Content>
-                    <CareerHistory.Image/>
-                    <CareerHistory.Title/>
-                    <CareerHistory.Text/>
-                </CareerHistory.Content>
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
+                    </CareerHistory.Content>
 
-                <CareerHistory.Content>
-                    <CareerHistory.Image/>
-                    <CareerHistory.Title/>
-                    <CareerHistory.Text/>
-                </CareerHistory.Content>
-            </CareerHistory>
-        </TimeContentBox>
-        <CardContentBox>
-            {/*https://campaign.naver.com/naverhyundaicard/?eventCode=NAV08&dtm_source=naver_brandsearch&dtm_medium=search&dtm_campaign=naverhcard&pcode=naver_brandsearch_graffiti_main_img*/}
-            {/* 참고 */}
-
-            <TEST_CONTAINER ref={cardContainer}>
-                <TEST ref={el => cardBoxRefs.current[0] = el}>
-                    123
-                </TEST>
-                <TEST ref={el => cardBoxRefs.current[1] = el}>
-                    456
-                </TEST>
-                <TEST ref={el => cardBoxRefs.current[2] = el}>
-                    789
-                </TEST>
-            </TEST_CONTAINER>
-
-        </CardContentBox>
-    </ContainerLayout>)
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
+                    </CareerHistory.Content>
+                </CareerHistory>
+            </TimeContentBox>
+            <CardContentBox>
+                <CardContentScrollBox ref={cardContainer}>
+                    //FIXME: ref 이름 그대로 props로 넘길 수 없음
+                    <CardContent cardRef={el => cardBoxRefs.current[0] = el}>
+                        123
+                    </CardContent>
+                    <CardContent cardRef={el => cardBoxRefs.current[1] = el}>
+                        456
+                    </CardContent>
+                    <CardContent cardRef={el => cardBoxRefs.current[2] = el}>
+                        789
+                    </CardContent>
+                </CardContentScrollBox>
+            </CardContentBox>
+        </ContainerLayout>
+    )
 }
 
 export default CareerContainer;
@@ -140,7 +148,7 @@ const CardContentBox = styled.div`
 
 `
 
-const TEST_CONTAINER = styled.div`
+const CardContentScrollBox = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -151,11 +159,11 @@ const TEST_CONTAINER = styled.div`
   background-color: blanchedalmond;
 `
 
-const TEST = styled.div`
+const CardContent = styled(Card)`
   position: fixed;
 
-  width: 100px;
-  height: 100px;
+  width: 600px;
+  height: 700px;
 
   left: 50%;
   top: 100%;
@@ -166,7 +174,7 @@ const TEST = styled.div`
 
   &:nth-of-type(1) {
     position: static;
-    margin-top: 50%;
+    margin-top: 35%;
     visibility: visible;
     opacity: 1;
   }
