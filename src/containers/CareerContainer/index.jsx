@@ -161,10 +161,7 @@ const CardContentScrollBox = styled.div`
 
 const CardContent = styled(Card)`
   position: fixed;
-
-  width: 600px;
-  height: 700px;
-
+  
   left: 50%;
   top: 100%;
   transform: translate(-50%);
@@ -178,8 +175,4 @@ const CardContent = styled(Card)`
     visibility: visible;
     opacity: 1;
   }
-
-  background-color: red;
-
-  border: 10px solid black;
 `

@@ -35,5 +35,11 @@ Card.Footer = CardFooter;
 export default Card;
 
 const CardBox = styled.div`
+
+  width: 600px;
+  height: 700px;
+
+  border: 5px solid #000000;
+  border-radius: 10px;
   background-color: #213547;
 `
