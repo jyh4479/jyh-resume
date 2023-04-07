@@ -40,6 +40,6 @@ const CardBox = styled.div`
   height: 700px;
 
   border: 5px solid #000000;
-  border-radius: 10px;
-  background-color: #213547;
+  border-radius: 25px;
+  background-color: #ffffff;
 `

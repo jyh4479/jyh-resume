@@ -14,6 +14,14 @@ const CareerContainer = (props) => {
 
     useEffect(() => {
 
+        // const componentScrollEvent = (e) => {
+        //     window.scroll({
+        //         top: window.pageYOffset + 500,
+        //         left: 0,
+        //         behavior: 'smooth'
+        //     });
+        // }
+
         const scrollEvent = () => {
 
             const TOP_POSITION = 20;
@@ -61,9 +69,19 @@ const CareerContainer = (props) => {
         window.addEventListener("wheel", scrollEvent, false);
         window.addEventListener("scroll", scrollEvent, false);
 
+        // cardBoxRefs.current.forEach(ref => {
+        //     ref.addEventListener("click", componentScrollEvent);
+        //     ref.addEventListener("scroll", componentScrollEvent);
+        // })
+
         return () => {
             window.removeEventListener("wheel", scrollEvent);
             window.removeEventListener("scroll", scrollEvent);
+
+            // cardBoxRefs.current.forEach(ref => {
+            //     ref.removeEventListener("click", componentScrollEvent);
+            //     ref.removeEventListener("scroll", componentScrollEvent);
+            // })
         }
     }, [cardBoxRefs.current])
 
@@ -160,8 +178,8 @@ const CardContentScrollBox = styled.div`
 `
 
 const CardContent = styled(Card)`
-  position: fixed;
-  
+  position: absolute;
+
   left: 50%;
   top: 100%;
   transform: translate(-50%);
