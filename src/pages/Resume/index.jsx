@@ -17,10 +17,10 @@ const Resume = (props) => {
     return (
         <PageContainer>
             <TitleTextContainer/>
-            <LoadingContainer>
-                <EducationContainer/>
-                <CareerContainer/>
-            </LoadingContainer>
+            {/*<LoadingContainer>*/}
+            <EducationContainer/>
+            <CareerContainer/>
+            {/*</LoadingContainer>*/}
         </PageContainer>
     )
 };

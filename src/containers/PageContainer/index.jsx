@@ -16,7 +16,7 @@ const PageContainer = (props) => {
     }
 
     return (
-        <BackGround color={theme.backGround}>
+        <BackGround className={"main-page"} color={theme.backGround}>
             <FixedBox top={5} right={5}>
                 <ToggleButton defaultValue={theme.themeName !== "Light"} color={theme.button} onClick={onChangeTheme}/>
             </FixedBox>
@@ -31,7 +31,7 @@ const BackGround = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${props => props.color};
-  
+
   overflow-x: hidden;
   overflow-y: scroll;
 `
@@ -40,6 +40,6 @@ const FixedBox = styled.div`
   position: fixed;
   top: ${props => props.top}px;
   right: ${props => props.right}px;
-  
+
   z-index: 9999;
 `

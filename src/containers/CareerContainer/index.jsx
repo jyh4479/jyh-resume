@@ -14,13 +14,10 @@ const CareerContainer = (props) => {
 
     useEffect(() => {
 
-        // const componentScrollEvent = (e) => {
-        //     window.scroll({
-        //         top: window.pageYOffset + 500,
-        //         left: 0,
-        //         behavior: 'smooth'
-        //     });
-        // }
+        const componentScrollEvent = (e) => {
+            // console.log(document.querySelector(".main-page"));
+            document.querySelector(".main-page").scrollBy(0, e.deltaY);
+        }
 
         const scrollEvent = () => {
 
@@ -69,19 +66,19 @@ const CareerContainer = (props) => {
         window.addEventListener("wheel", scrollEvent, false);
         window.addEventListener("scroll", scrollEvent, false);
 
-        // cardBoxRefs.current.forEach(ref => {
-        //     ref.addEventListener("click", componentScrollEvent);
-        //     ref.addEventListener("scroll", componentScrollEvent);
-        // })
+        cardBoxRefs.current.forEach(ref => {
+            ref.addEventListener("wheel", componentScrollEvent);
+            ref.addEventListener("scroll", componentScrollEvent);
+        })
 
         return () => {
             window.removeEventListener("wheel", scrollEvent);
             window.removeEventListener("scroll", scrollEvent);
 
-            // cardBoxRefs.current.forEach(ref => {
-            //     ref.removeEventListener("click", componentScrollEvent);
-            //     ref.removeEventListener("scroll", componentScrollEvent);
-            // })
+            cardBoxRefs.current.forEach(ref => {
+                ref.removeEventListener("wheel", componentScrollEvent);
+                ref.removeEventListener("scroll", componentScrollEvent);
+            })
         }
     }, [cardBoxRefs.current])
 
