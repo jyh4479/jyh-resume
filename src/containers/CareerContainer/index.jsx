@@ -15,7 +15,7 @@ const CareerContainer = (props) => {
     useEffect(() => {
 
         const componentScrollEvent = (e) => {
-            // console.log(document.querySelector(".main-page"));
+            // Scroll 동작이 window가 아니라 특정 component에 붙어있기 때문에 class name으로 scroll 붙어있는 component에 접근
             document.querySelector(".main-page").scrollBy(0, e.deltaY);
         }
 
