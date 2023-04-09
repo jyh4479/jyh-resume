@@ -2,12 +2,12 @@ import React, {useEffect, useRef} from 'react';
 import styled from "@emotion/styled";
 import {Text} from "../style"
 
-const BounceText = (props) => {
+const BounceText = React.forwardRef((props, ref) => {
 
     const {children, size, color = "#000000"} = props;
 
     return (
-        <Text {...props}>
+        <Text ref={ref} {...props}>
             {
                 children
                     .split('', -1)
@@ -25,7 +25,7 @@ const BounceText = (props) => {
             }
         </Text>
     )
-}
+});
 
 export default BounceText;
 

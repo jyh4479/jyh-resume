@@ -3,13 +3,15 @@ import styled from "@emotion/styled";
 import {useRecoilValue} from "recoil";
 import {themeState} from "@/stores/Theme/index.js";
 import {Card, CareerHistory} from "@/components";
+import BounceText from "../../components/Text/BounceText/index.jsx";
 
 const CareerContainer = (props) => {
 
     const theme = useRecoilValue(themeState);
 
-    const cardBoxRefs = useRef([]);
     const cardContainer = useRef(null);
+    const cardContainerTitle = useRef(null);
+    const cardBoxRefs = useRef([]);
 
 
     useEffect(() => {
@@ -115,6 +117,9 @@ const CareerContainer = (props) => {
             <CardContentBox>
                 <CardContentScrollBox ref={cardContainer}>
                     {/*FIXME: ref 이름 그대로 props로 넘길 수 없음*/}
+                    <BounceText ref={cardContainerTitle}>
+                        Career card
+                    </BounceText>
                     <CardContent ref={el => cardBoxRefs.current[0] = el}>
                         123
                     </CardContent>
