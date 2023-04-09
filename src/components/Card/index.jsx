@@ -3,19 +3,19 @@ import styled from "@emotion/styled";
 
 const CardContext = createContext(null);
 
-const Card = (props) => {
+const Card = React.forwardRef((props, ref) => {
 
     const {children, cardRef} = props;
 
     return (
         <CardContext.Provider value={null}>
-            <CardBox {...props} ref={cardRef}>
+            <CardBox {...props} ref={ref}>
                 {children}
             </CardBox>
         </CardContext.Provider>
 
     )
-}
+});
 
 const CardHeader = () => {
     return (

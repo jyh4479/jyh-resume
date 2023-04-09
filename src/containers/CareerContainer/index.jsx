@@ -115,13 +115,13 @@ const CareerContainer = (props) => {
             <CardContentBox>
                 <CardContentScrollBox ref={cardContainer}>
                     {/*FIXME: ref 이름 그대로 props로 넘길 수 없음*/}
-                    <CardContent cardRef={el => cardBoxRefs.current[0] = el}>
+                    <CardContent ref={el => cardBoxRefs.current[0] = el}>
                         123
                     </CardContent>
-                    <CardContent cardRef={el => cardBoxRefs.current[1] = el}>
+                    <CardContent ref={el => cardBoxRefs.current[1] = el}>
                         456
                     </CardContent>
-                    <CardContent cardRef={el => cardBoxRefs.current[2] = el}>
+                    <CardContent ref={el => cardBoxRefs.current[2] = el}>
                         789
                     </CardContent>
                 </CardContentScrollBox>
