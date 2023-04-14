@@ -28,11 +28,18 @@ const CareerContainer = (props) => {
             const REVERSE_TOP_POSITION = BOTTOM_POSITION - TOP_POSITION;
 
             if (cardContainer.current.getBoundingClientRect().top > 0) {
+                cardContainerTitle.current.style.position = "static";
+                cardContainerTitle.current.style.marginTop = "11.5%";
+                cardContainerTitle.current.style.left = "50%";
+                cardContainerTitle.current.style.top = `${TOP_POSITION - 10}%`;
+                cardContainerTitle.current.style.transform = "none";
+                cardContainerTitle.current.style.zIndex = 9999;
+
                 cardBoxRefs.current.forEach((current, index) => {
                     if (index === 0) {
                         current.style.position = "static";
                         current.style.transform = "none";
-                        current.style.marginTop = "22%";
+                        current.style.marginTop = "7.5%";
                     } else {
                         current.style.position = "fixed";
                         current.style.top = "100%";
@@ -43,11 +50,11 @@ const CareerContainer = (props) => {
 
             if (cardContainer.current.getBoundingClientRect().top <= 0) {
                 cardContainerTitle.current.style.position = "fixed";
+                cardContainerTitle.current.style.marginTop = 0;
                 cardContainerTitle.current.style.left = "50%";
                 cardContainerTitle.current.style.top = `${TOP_POSITION - 10}%`;
                 cardContainerTitle.current.style.transform = "translate(-50%)";
                 cardContainerTitle.current.style.zIndex = 9999;
-
 
                 cardBoxRefs.current[0].style.position = "fixed";
                 cardBoxRefs.current[0].style.marginTop = 0;
@@ -91,55 +98,53 @@ const CareerContainer = (props) => {
         }
     }, [cardBoxRefs.current])
 
-    return (
-        <ContainerLayout color={theme.backGround}>
-            <TimeContentBox>
-                <CareerHistory>
+    return (<ContainerLayout color={theme.backGround}>
+        <TimeContentBox>
+            <CareerHistory>
 
-                    <CareerHistory.Content>
-                        <CareerHistory.Image/>
-                        <CareerHistory.Title/>
-                        <CareerHistory.Text/>
-                    </CareerHistory.Content>
+                <CareerHistory.Content>
+                    <CareerHistory.Image/>
+                    <CareerHistory.Title/>
+                    <CareerHistory.Text/>
+                </CareerHistory.Content>
 
-                    <CareerHistory.Content>
-                        <CareerHistory.Image/>
-                        <CareerHistory.Title/>
-                        <CareerHistory.Text/>
-                    </CareerHistory.Content>
+                <CareerHistory.Content>
+                    <CareerHistory.Image/>
+                    <CareerHistory.Title/>
+                    <CareerHistory.Text/>
+                </CareerHistory.Content>
 
-                    <CareerHistory.Content>
-                        <CareerHistory.Image/>
-                        <CareerHistory.Title/>
-                        <CareerHistory.Text/>
-                    </CareerHistory.Content>
+                <CareerHistory.Content>
+                    <CareerHistory.Image/>
+                    <CareerHistory.Title/>
+                    <CareerHistory.Text/>
+                </CareerHistory.Content>
 
-                    <CareerHistory.Content>
-                        <CareerHistory.Image/>
-                        <CareerHistory.Title/>
-                        <CareerHistory.Text/>
-                    </CareerHistory.Content>
-                </CareerHistory>
-            </TimeContentBox>
-            <CardContentBox>
-                <CardContentScrollBox ref={cardContainer}>
-                    {/*FIXME: ref 이름 그대로 props로 넘길 수 없음*/}
-                    <BounceText size={30} ref={cardContainerTitle}>
-                        Career card
-                    </BounceText>
-                    <CardContent ref={el => cardBoxRefs.current[0] = el}>
-                        123
-                    </CardContent>
-                    <CardContent ref={el => cardBoxRefs.current[1] = el}>
-                        456
-                    </CardContent>
-                    <CardContent ref={el => cardBoxRefs.current[2] = el}>
-                        789
-                    </CardContent>
-                </CardContentScrollBox>
-            </CardContentBox>
-        </ContainerLayout>
-    )
+                <CareerHistory.Content>
+                    <CareerHistory.Image/>
+                    <CareerHistory.Title/>
+                    <CareerHistory.Text/>
+                </CareerHistory.Content>
+            </CareerHistory>
+        </TimeContentBox>
+        <CardContentBox>
+            <CardContentScrollBox ref={cardContainer}>
+                {/*FIXME: ref 이름 그대로 props로 넘길 수 없음*/}
+                <BounceText size={30} ref={cardContainerTitle}>
+                    Career card
+                </BounceText>
+                <CardContent ref={el => cardBoxRefs.current[0] = el}>
+                    123
+                </CardContent>
+                <CardContent ref={el => cardBoxRefs.current[1] = el}>
+                    456
+                </CardContent>
+                <CardContent ref={el => cardBoxRefs.current[2] = el}>
+                    789
+                </CardContent>
+            </CardContentScrollBox>
+        </CardContentBox>
+    </ContainerLayout>)
 }
 
 export default CareerContainer;
@@ -198,7 +203,6 @@ const CardContent = styled(Card)`
 
   &:nth-of-type(1) {
     position: static;
-    margin-top: 35%;
     visibility: visible;
     opacity: 1;
   }
