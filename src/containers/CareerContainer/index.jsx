@@ -42,6 +42,13 @@ const CareerContainer = (props) => {
             }
 
             if (cardContainer.current.getBoundingClientRect().top <= 0) {
+                cardContainerTitle.current.style.position = "fixed";
+                cardContainerTitle.current.style.left = "50%";
+                cardContainerTitle.current.style.top = `${TOP_POSITION - 10}%`;
+                cardContainerTitle.current.style.transform = "translate(-50%)";
+                cardContainerTitle.current.style.zIndex = 9999;
+
+
                 cardBoxRefs.current[0].style.position = "fixed";
                 cardBoxRefs.current[0].style.marginTop = 0;
                 cardBoxRefs.current[0].style.left = "50%";
@@ -117,7 +124,7 @@ const CareerContainer = (props) => {
             <CardContentBox>
                 <CardContentScrollBox ref={cardContainer}>
                     {/*FIXME: ref 이름 그대로 props로 넘길 수 없음*/}
-                    <BounceText ref={cardContainerTitle}>
+                    <BounceText size={30} ref={cardContainerTitle}>
                         Career card
                     </BounceText>
                     <CardContent ref={el => cardBoxRefs.current[0] = el}>
