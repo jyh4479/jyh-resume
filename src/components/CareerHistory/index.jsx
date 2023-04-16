@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {createContext, useContext, useEffect, useRef, useState} from 'react';
 import styled from "@emotion/styled";
 
 const CONTENT_WIDTH = 400;
@@ -7,6 +7,8 @@ const CONTENT_HEIGHT = 400;
 const TEXT_BOX_WIDTH = 300;
 const TEXT_BOX_HEIGHT = 200;
 
+const CareerContext = createContext(null);
+
 const CareerHistory = (props) => {
 
     const {children} = props;
@@ -14,6 +16,8 @@ const CareerHistory = (props) => {
     const lineRef = useRef(null);
     const lineBoxRef = useRef(null);
     const [lineWidth, setLineWidth] = useState(0);
+
+    const [active, setActive] = useState(false);
 
     useEffect(() => {
         setLineWidth(lineBoxRef.current?.childNodes?.length * CONTENT_WIDTH);
@@ -24,8 +28,13 @@ const CareerHistory = (props) => {
 
         const domObserver = new IntersectionObserver(e => {
             e.forEach(line => {
-                if (line.isIntersecting) line.target.style.width = `${lineWidth}px`;
-                else line.target.style.width = "0px";
+                if (line.isIntersecting) {
+                    line.target.style.width = `${lineWidth}px`;
+                    setActive(true);
+                } else {
+                    line.target.style.width = "0px";
+                    setActive(false);
+                }
             })
         });
         domObserver.observe(lineRef.current);
@@ -37,19 +46,36 @@ const CareerHistory = (props) => {
             <DirectionLineBox width={lineWidth}>
                 <DirectionLine ref={lineRef}/>
             </DirectionLineBox>
-            <DirectionLineContentBox ref={lineBoxRef}>
-                {children}
-            </DirectionLineContentBox>
+            <CareerContext.Provider value={{active}}>
+                <DirectionLineContentBox ref={lineBoxRef}>
+                    {children}
+                </DirectionLineContentBox>
+            </CareerContext.Provider>
         </CareerHistoryContainer>
     );
 };
 
 const CareerHistoryContent = (props) => {
-
+    const {active} = useContext(CareerContext);
     const {children} = props;
+    const boxRef = useRef(null);
+
+    const [index, setIndex] = useState(0);
+    const [width, setWidth] = useState(0);
+
+    useEffect(() => {
+        const parent = boxRef.current.parentNode;
+        const myIndex = Array.prototype.indexOf.call(parent.children, boxRef.current);
+        setIndex(myIndex);
+    }, []);
+
+    useEffect(() => {
+        active ? setWidth(CONTENT_WIDTH) : setWidth(0);
+    }, [active])
+
 
     return (
-        <ContentBox>
+        <ContentBox ref={boxRef} index={index} width={width}>
             {children}
         </ContentBox>
     )
@@ -156,7 +182,7 @@ const DirectionLineContentBox = styled.div`
 const ContentBox = styled.div`
   position: relative;
 
-  width: ${CONTENT_WIDTH}px;
+  width: ${props => props.width}px;
 
   height: 50%;
 
@@ -170,4 +196,7 @@ const ContentBox = styled.div`
   }
 
   opacity: 0.5;
+
+  transition: width 1s ease;
+  transition-delay: ${props => props.index}s;
 `
