@@ -98,53 +98,53 @@ const CareerContainer = (props) => {
         }
     }, [cardBoxRefs.current])
 
-    return (<ContainerLayout color={theme.backGround}>
-        <TimeContentBox>
-            <CareerHistory>
+    return (
+        <ContainerLayout color={theme.backGround}>
+            <TimeContentBox>
+                <CareerHistory>
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
+                    </CareerHistory.Content>
 
-                <CareerHistory.Content>
-                    <CareerHistory.Image/>
-                    <CareerHistory.Title/>
-                    <CareerHistory.Text/>
-                </CareerHistory.Content>
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
+                    </CareerHistory.Content>
 
-                <CareerHistory.Content>
-                    <CareerHistory.Image/>
-                    <CareerHistory.Title/>
-                    <CareerHistory.Text/>
-                </CareerHistory.Content>
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
+                    </CareerHistory.Content>
 
-                <CareerHistory.Content>
-                    <CareerHistory.Image/>
-                    <CareerHistory.Title/>
-                    <CareerHistory.Text/>
-                </CareerHistory.Content>
-
-                <CareerHistory.Content>
-                    <CareerHistory.Image/>
-                    <CareerHistory.Title/>
-                    <CareerHistory.Text/>
-                </CareerHistory.Content>
-            </CareerHistory>
-        </TimeContentBox>
-        <CardContentBox>
-            <CardContentScrollBox ref={cardContainer}>
-                {/*FIXME: ref 이름 그대로 props로 넘길 수 없음*/}
-                <BounceText size={30} ref={cardContainerTitle}>
-                    Career card
-                </BounceText>
-                <CardContent ref={el => cardBoxRefs.current[0] = el}>
-                    123
-                </CardContent>
-                <CardContent ref={el => cardBoxRefs.current[1] = el}>
-                    456
-                </CardContent>
-                <CardContent ref={el => cardBoxRefs.current[2] = el}>
-                    789
-                </CardContent>
-            </CardContentScrollBox>
-        </CardContentBox>
-    </ContainerLayout>)
+                    <CareerHistory.Content>
+                        <CareerHistory.Image/>
+                        <CareerHistory.Title/>
+                        <CareerHistory.Text/>
+                    </CareerHistory.Content>
+                </CareerHistory>
+            </TimeContentBox>
+            <CardContentBox>
+                <CardContentScrollBox ref={cardContainer}>
+                    <BounceText size={30} ref={cardContainerTitle}>
+                        Career card
+                    </BounceText>
+                    <CardContent ref={el => cardBoxRefs.current[0] = el}>
+                        123
+                    </CardContent>
+                    <CardContent ref={el => cardBoxRefs.current[1] = el}>
+                        456
+                    </CardContent>
+                    <CardContent ref={el => cardBoxRefs.current[2] = el}>
+                        789
+                    </CardContent>
+                </CardContentScrollBox>
+            </CardContentBox>
+        </ContainerLayout>
+    )
 }
 
 export default CareerContainer;
