@@ -44,7 +44,7 @@ const CareerHistory = (props) => {
         <CareerHistoryContainer>
             {/* DirectionLineBox 화살표를 중앙 정렬 하면서 첫 시작 왼쪽에서 오른쪽으로 화살표 애니메이션을 위한 박스 */}
             <DirectionLineBox width={lineWidth}>
-                <DirectionLine ref={lineRef}/>
+                <DirectionLine ref={lineRef} delay={lineBoxRef.current?.childNodes?.length}/>
             </DirectionLineBox>
             <CareerContext.Provider value={{active}}>
                 <DirectionLineContentBox ref={lineBoxRef}>
@@ -75,9 +75,11 @@ const CareerHistoryContent = (props) => {
 
 
     return (
-        <ContentBox ref={boxRef} index={index} width={width}>
-            {children}
-        </ContentBox>
+        <ContentBoxWrapper ref={boxRef}>
+            <ContentBox index={index} width={width}>
+                {children}
+            </ContentBox>
+        </ContentBoxWrapper>
     )
 }
 
@@ -138,7 +140,7 @@ const DirectionLine = styled.div`
   transform: translate(0, -50%);
   z-index: 1;
 
-  transition: width 4s ease;
+  transition: width ${props => props.delay}s linear;
 
   &::after {
     position: absolute;
@@ -173,18 +175,32 @@ const DirectionLineContentBox = styled.div`
   height: 100%;
 
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(0, -50%);
 
   display: flex;
 `
 
-const ContentBox = styled.div`
+const ContentBoxWrapper = styled.div`
   position: relative;
 
-  width: ${props => props.width}px;
+  width: ${CONTENT_WIDTH}px;
 
   height: 50%;
+
+  &:nth-of-type(even) {
+    top: 50%;
+  }
+
+  &:nth-of-type(odd) {
+  }
+`
+
+const ContentBox = styled.div`
+  position: relative;
+  
+  width: ${props => props.width}px;
+
+  height: 100%;
 
   &:nth-of-type(even) {
     background-color: red;
@@ -197,6 +213,6 @@ const ContentBox = styled.div`
 
   opacity: 0.5;
 
-  transition: width 1s ease;
+  transition: width 1s linear;
   transition-delay: ${props => props.index}s;
 `

@@ -24,6 +24,7 @@ const CareerContainer = (props) => {
         const scrollEvent = () => {
 
             const TOP_POSITION = 20;
+            const TOP_END_POSITION = 670;
             const BOTTOM_POSITION = 100;
             const REVERSE_TOP_POSITION = BOTTOM_POSITION - TOP_POSITION;
 
@@ -49,6 +50,32 @@ const CareerContainer = (props) => {
             }
 
             if (cardContainer.current.getBoundingClientRect().top <= 0) {
+
+                //The move number by scroll event
+                const move = cardContainer.current.getBoundingClientRect().top / 25;
+
+                //Current animation box top position
+                const top = BOTTOM_POSITION + move;
+
+                //Current target component index
+                const targetIndex = (parseInt(-move / REVERSE_TOP_POSITION)) + 1;
+
+                if (cardBoxRefs.current[targetIndex] === undefined) {
+                    cardBoxRefs.current.forEach((current, index) => {
+                        current.style.position = "absolute";
+                        current.style.top = `${TOP_END_POSITION}%`;
+                        current.style.left = "50%";
+                        current.style.transform = "translate(-50%)";
+                    })
+
+                    return;
+                }
+
+                //TODO: validation 함수화
+                if (0 < targetIndex - 1 && targetIndex - 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex - 1].style.top = `${TOP_POSITION}%`;
+                if (0 < targetIndex + 1 && targetIndex + 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex + 1].style.top = "100%";
+                if (0 < targetIndex && targetIndex < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex].style.top = `${top + (REVERSE_TOP_POSITION * (targetIndex - 1))}%`;
+
                 cardContainerTitle.current.style.position = "fixed";
                 cardContainerTitle.current.style.marginTop = 0;
                 cardContainerTitle.current.style.left = "50%";
@@ -61,21 +88,6 @@ const CareerContainer = (props) => {
                 cardBoxRefs.current[0].style.left = "50%";
                 cardBoxRefs.current[0].style.top = `${TOP_POSITION}%`;
                 cardBoxRefs.current[0].style.transform = "translate(-50%)";
-
-                //The move number by scroll event
-                const move = cardContainer.current.getBoundingClientRect().top / 25;
-
-                //Current animation box top position
-                const top = BOTTOM_POSITION + move;
-
-                //Current target component index
-                const targetIndex = (parseInt(-move / REVERSE_TOP_POSITION)) + 1;
-
-
-                //TODO: validation 함수화
-                if (0 < targetIndex - 1 && targetIndex - 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex - 1].style.top = `${TOP_POSITION}%`;
-                if (0 < targetIndex + 1 && targetIndex + 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex + 1].style.top = "100%";
-                if (0 < targetIndex && targetIndex < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex].style.top = `${top + (REVERSE_TOP_POSITION * (targetIndex - 1))}%`;
             }
         }
 
@@ -186,7 +198,7 @@ const CardContentScrollBox = styled.div`
   flex-direction: column;
 
   width: 50%;
-  height: 6000px;
+  height: 7000px;
 
   background-color: blanchedalmond;
 `
