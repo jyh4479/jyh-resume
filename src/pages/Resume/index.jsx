@@ -1,5 +1,5 @@
 import React from 'react';
-import {EducationContainer, LoadingContainer, PageContainer, TitleTextContainer} from "@/containers/index.js";
+import {EducationContainer, PageContainer, TitleTextContainer} from "@/containers/index.js";
 import CareerContainer from "@/containers/CareerContainer/index.jsx";
 
 // TODO - 아래 내용을 기반으로 회사에서 진행했던 프로젝트와 개선 내용을 정리하기
@@ -20,6 +20,7 @@ const Resume = (props) => {
             {/*<LoadingContainer>*/}
             <EducationContainer/>
             <CareerContainer/>
+            <div style={{width: "100vw", height: "100vh", background: "red"}}/>
             {/*</LoadingContainer>*/}
         </PageContainer>
     )

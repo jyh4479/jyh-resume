@@ -5,6 +5,7 @@ import {themeState} from "@/stores/Theme/index.js";
 import {Card, CareerHistory} from "@/components";
 import BounceText from "../../components/Text/BounceText/index.jsx";
 
+const END_HEIGHT = 5000;
 const CareerContainer = (props) => {
 
     const theme = useRecoilValue(themeState);
@@ -24,11 +25,12 @@ const CareerContainer = (props) => {
         const scrollEvent = () => {
 
             const TOP_POSITION = 20;
-            const TOP_END_POSITION = 670;
             const BOTTOM_POSITION = 100;
             const REVERSE_TOP_POSITION = BOTTOM_POSITION - TOP_POSITION;
 
-            if (cardContainer.current.getBoundingClientRect().top > 0) {
+            const componentTopViewportPosition = parseInt(cardContainer.current.getBoundingClientRect().top);
+
+            if (componentTopViewportPosition > 0) {
                 cardContainerTitle.current.style.position = "static";
                 cardContainerTitle.current.style.marginTop = "11.5%";
                 cardContainerTitle.current.style.left = "50%";
@@ -49,10 +51,10 @@ const CareerContainer = (props) => {
                 return;
             }
 
-            if (cardContainer.current.getBoundingClientRect().top <= 0) {
+            if (componentTopViewportPosition <= 0) {
 
                 //The move number by scroll event
-                const move = cardContainer.current.getBoundingClientRect().top / 25;
+                const move = componentTopViewportPosition / 25;
 
                 //Current animation box top position
                 const top = BOTTOM_POSITION + move;
@@ -60,16 +62,16 @@ const CareerContainer = (props) => {
                 //Current target component index
                 const targetIndex = (parseInt(-move / REVERSE_TOP_POSITION)) + 1;
 
-                if (cardBoxRefs.current[targetIndex] === undefined) {
-                    cardBoxRefs.current.forEach((current, index) => {
-                        current.style.position = "absolute";
-                        current.style.top = `${TOP_END_POSITION}%`;
-                        current.style.left = "50%";
-                        current.style.transform = "translate(-50%)";
-                    })
-
-                    return;
-                }
+                // if (cardBoxRefs.current[targetIndex] === undefined) {
+                //     cardBoxRefs.current.forEach((current, index) => {
+                //         current.style.position = "absolute";
+                //         current.style.top = `${TOP_END_POSITION}%`;
+                //         current.style.left = "50%";
+                //         current.style.transform = "translate(-50%)";
+                //     })
+                //
+                //     return;
+                // }
 
                 //TODO: validation 함수화
                 if (0 < targetIndex - 1 && targetIndex - 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex - 1].style.top = `${TOP_POSITION}%`;
@@ -88,6 +90,10 @@ const CareerContainer = (props) => {
                 cardBoxRefs.current[0].style.left = "50%";
                 cardBoxRefs.current[0].style.top = `${TOP_POSITION}%`;
                 cardBoxRefs.current[0].style.transform = "translate(-50%)";
+            }
+
+            if (componentTopViewportPosition <= -(END_HEIGHT - 1)) {
+                console.log("다옴!");
             }
         }
 
@@ -155,6 +161,7 @@ const CareerContainer = (props) => {
                     </CardContent>
                 </CardContentScrollBox>
             </CardContentBox>
+            <CardEndBox/>
         </ContainerLayout>
     )
 }
@@ -183,7 +190,7 @@ const CardContentBox = styled.div`
   position: relative;
 
   width: 100%;
-  height: 60%;
+  //height: 60%;
 
   display: flex;
   justify-content: center;
@@ -198,7 +205,7 @@ const CardContentScrollBox = styled.div`
   flex-direction: column;
 
   width: 50%;
-  height: 7000px;
+  height: ${END_HEIGHT}px;
 
   background-color: blanchedalmond;
 `
@@ -218,4 +225,11 @@ const CardContent = styled(Card)`
     visibility: visible;
     opacity: 1;
   }
+`
+
+const CardEndBox = styled.div`
+  width: 100%;
+  height: 100vh;
+
+  background-color: yellow;
 `

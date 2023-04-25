@@ -31,10 +31,11 @@ const CareerHistory = (props) => {
                 if (line.isIntersecting) {
                     line.target.style.width = `${lineWidth}px`;
                     setActive(true);
-                } else {
-                    line.target.style.width = "0px";
-                    setActive(false);
                 }
+                // else {
+                //     line.target.style.width = "0px";
+                //     setActive(false);
+                // }
             })
         });
         domObserver.observe(lineRef.current);
@@ -132,6 +133,7 @@ const DirectionLineBox = styled.div`
 
 const DirectionLine = styled.div`
   position: absolute;
+  width: 0px;
   height: 10px;
   background-color: blue;
   border-radius: 100px;
