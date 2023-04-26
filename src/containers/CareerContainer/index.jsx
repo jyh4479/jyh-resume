@@ -51,7 +51,9 @@ const CareerContainer = (props) => {
                 return;
             }
 
-            if (componentTopViewportPosition <= 0) {
+            if (-(END_HEIGHT - 1) < componentTopViewportPosition && componentTopViewportPosition <= 0) {
+
+                console.log("이건디?");
 
                 //The move number by scroll event
                 const move = componentTopViewportPosition / 25;
@@ -61,17 +63,6 @@ const CareerContainer = (props) => {
 
                 //Current target component index
                 const targetIndex = (parseInt(-move / REVERSE_TOP_POSITION)) + 1;
-
-                // if (cardBoxRefs.current[targetIndex] === undefined) {
-                //     cardBoxRefs.current.forEach((current, index) => {
-                //         current.style.position = "absolute";
-                //         current.style.top = `${TOP_END_POSITION}%`;
-                //         current.style.left = "50%";
-                //         current.style.transform = "translate(-50%)";
-                //     })
-                //
-                //     return;
-                // }
 
                 //TODO: validation 함수화
                 if (0 < targetIndex - 1 && targetIndex - 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex - 1].style.top = `${TOP_POSITION}%`;
@@ -93,7 +84,12 @@ const CareerContainer = (props) => {
             }
 
             if (componentTopViewportPosition <= -(END_HEIGHT - 1)) {
-                console.log("다옴!");
+                cardBoxRefs.current.forEach((current, index) => {
+                    current.style.position = "absolute";
+                    current.style.top = "104%";
+                    current.style.left = "50%";
+                    current.style.transform = "translate(-50%)";
+                })
             }
         }
 
@@ -170,7 +166,6 @@ export default CareerContainer;
 
 const ContainerLayout = styled.div`
   width: 100vw;
-  height: 100vh;
 
   background-color: ${props => props.color};
 `
