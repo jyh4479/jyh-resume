@@ -51,10 +51,9 @@ const CareerContainer = (props) => {
                 return;
             }
 
+            //TODO: 아래에서 올라갈때 상태에 대한 부분 수정해야함
             if (-(END_HEIGHT - 1) < componentTopViewportPosition && componentTopViewportPosition <= 0) {
-
-                console.log("이건디?");
-
+                
                 //The move number by scroll event
                 const move = componentTopViewportPosition / 25;
 
