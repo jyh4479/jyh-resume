@@ -53,7 +53,12 @@ const CareerContainer = (props) => {
 
             //TODO: 아래에서 올라갈때 상태에 대한 부분 수정해야함
             if (-(END_HEIGHT - 1) < componentTopViewportPosition && componentTopViewportPosition <= 0) {
-                
+
+                cardBoxRefs.current.forEach(current => {
+                    current.style.position = "fixed";
+                })
+
+
                 //The move number by scroll event
                 const move = componentTopViewportPosition / 25;
 
@@ -171,7 +176,7 @@ const ContainerLayout = styled.div`
 
 const TimeContentBox = styled.div`
   width: 100%;
-  height: 40%;
+  height: 40vh;
 
   display: flex;
   align-items: center;
