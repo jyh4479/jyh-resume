@@ -30,6 +30,7 @@ const CareerContainer = (props) => {
 
             const componentTopViewportPosition = parseInt(cardContainer.current.getBoundingClientRect().top);
 
+            // Before scrolling
             if (componentTopViewportPosition > 0) {
                 cardContainerTitle.current.style.position = "static";
                 cardContainerTitle.current.style.marginTop = "11.5%";
@@ -47,17 +48,18 @@ const CareerContainer = (props) => {
                         current.style.position = "fixed";
                         current.style.top = "100%";
                     }
-                })
+                });
                 return;
             }
 
-            //TODO: 아래에서 올라갈때 상태에 대한 부분 수정해야함
+            // Scrolling
             if (-(END_HEIGHT - 1) < componentTopViewportPosition && componentTopViewportPosition <= 0) {
 
                 cardBoxRefs.current.forEach(current => {
                     current.style.position = "fixed";
-                })
+                });
 
+                cardContainerTitle.current.style.position = "fixed";
 
                 //The move number by scroll event
                 const move = componentTopViewportPosition / 25;
@@ -73,7 +75,6 @@ const CareerContainer = (props) => {
                 if (0 < targetIndex + 1 && targetIndex + 1 < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex + 1].style.top = "100%";
                 if (0 < targetIndex && targetIndex < cardBoxRefs.current.length) cardBoxRefs.current[targetIndex].style.top = `${top + (REVERSE_TOP_POSITION * (targetIndex - 1))}%`;
 
-                cardContainerTitle.current.style.position = "fixed";
                 cardContainerTitle.current.style.marginTop = 0;
                 cardContainerTitle.current.style.left = "50%";
                 cardContainerTitle.current.style.top = `${TOP_POSITION - 10}%`;
@@ -87,12 +88,17 @@ const CareerContainer = (props) => {
                 cardBoxRefs.current[0].style.transform = "translate(-50%)";
             }
 
+            // After scrolling
             if (componentTopViewportPosition <= -(END_HEIGHT - 1)) {
+
+                cardContainerTitle.current.style.position = "absolute";
+                cardContainerTitle.current.style.top = "102%";
+
                 cardBoxRefs.current.forEach((current, index) => {
                     current.style.position = "absolute";
                     current.style.top = "104%";
-                    current.style.left = "50%";
-                    current.style.transform = "translate(-50%)";
+                    // current.style.left = "50%";
+                    // current.style.transform = "translate(-50%)";
                 })
             }
         }
