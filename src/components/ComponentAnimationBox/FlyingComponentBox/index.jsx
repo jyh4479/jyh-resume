@@ -11,7 +11,7 @@ const FlyingComponentBox = (props) => {
         const domObserver = new IntersectionObserver(e => {
             e.forEach(box => {
                 if (box.isIntersecting) box.target.style.transform = 'translateX(0%)';
-                else box.target.style.transform = `translateX(${fromDirection === 'left' ? -move : move}%)`;
+                // else box.target.style.transform = `translateX(${fromDirection === 'left' ? -move : move}%)`;
             })
         });
         domObserver.observe(boxRef.current);

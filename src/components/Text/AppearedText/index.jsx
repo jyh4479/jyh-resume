@@ -12,7 +12,7 @@ const AppearedText = (props) => {
         const domObserver = new IntersectionObserver(e => {
             e.forEach(text => {
                 if (text.isIntersecting) text.target.style.opacity = 1;
-                else text.target.style.opacity = 0;
+                // else text.target.style.opacity = 0;
             })
         });
         domObserver.observe(textRef.current);
