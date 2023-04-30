@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import {useRecoilValue} from "recoil";
 import {themeState} from "@/stores/Theme/index.js";
 import {Card, CareerHistory} from "@/components";
-import BounceText from "../../components/Text/BounceText/index.jsx";
+import {BounceText, NormalText} from "@/components/Text";
 
 const END_HEIGHT = 5000;
 const CareerContainer = (props) => {
@@ -125,27 +125,30 @@ const CareerContainer = (props) => {
     return (
         <ContainerLayout color={theme.backGround}>
             <TimeContentBox>
-                <CareerHistory>
+                <CareerHistory textColor={theme.text} lineColor={theme.button}>
                     <CareerHistory.Content>
-                        <CareerHistory.Image/>
+                        <CareerHistory.Title>
+                            <CareerNormalText color={theme.main}>NAVER finanacial</CareerNormalText>
+                        </CareerHistory.Title>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>Intern</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>Backend software developer</CareerNormalText>
+                        </CareerHistory.Text>
+                    </CareerHistory.Content>
+
+                    <CareerHistory.Content>
                         <CareerHistory.Title/>
                         <CareerHistory.Text/>
                     </CareerHistory.Content>
 
                     <CareerHistory.Content>
-                        <CareerHistory.Image/>
                         <CareerHistory.Title/>
                         <CareerHistory.Text/>
                     </CareerHistory.Content>
 
                     <CareerHistory.Content>
-                        <CareerHistory.Image/>
-                        <CareerHistory.Title/>
-                        <CareerHistory.Text/>
-                    </CareerHistory.Content>
-
-                    <CareerHistory.Content>
-                        <CareerHistory.Image/>
                         <CareerHistory.Title/>
                         <CareerHistory.Text/>
                     </CareerHistory.Content>
@@ -237,4 +240,8 @@ const CardEndBox = styled.div`
   height: 100vh;
 
   background-color: yellow;
+`
+
+const CareerNormalText = styled(NormalText)`
+  white-space: nowrap;
 `
