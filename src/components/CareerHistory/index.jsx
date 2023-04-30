@@ -11,7 +11,7 @@ const CareerContext = createContext(null);
 
 const CareerHistory = (props) => {
 
-    const {children} = props;
+    const {children, textColor = "#000000", lineColor = "#000000"} = props;
 
     const lineRef = useRef(null);
     const lineBoxRef = useRef(null);
@@ -45,7 +45,7 @@ const CareerHistory = (props) => {
         <CareerHistoryContainer>
             {/* DirectionLineBox 화살표를 중앙 정렬 하면서 첫 시작 왼쪽에서 오른쪽으로 화살표 애니메이션을 위한 박스 */}
             <DirectionLineBox width={lineWidth}>
-                <DirectionLine ref={lineRef} delay={lineBoxRef.current?.childNodes?.length}/>
+                <DirectionLine ref={lineRef} delay={lineBoxRef.current?.childNodes?.length} color={lineColor}/>
             </DirectionLineBox>
             <CareerContext.Provider value={{active}}>
                 <DirectionLineContentBox ref={lineBoxRef}>
@@ -90,14 +90,24 @@ const CareerHistoryImage = () => {
     )
 }
 
-const CareerHistoryTitle = () => {
+const CareerHistoryTitle = (props) => {
+
+    const {children} = props;
+
     return (
-        <div></div>
+        <TitleBox>
+            {children}
+        </TitleBox>
     )
 }
-const CareerHistoryText = () => {
+const CareerHistoryText = (props) => {
+
+    const {children} = props;
+
     return (
-        <div></div>
+        <TextBox>
+            {children}
+        </TextBox>
     )
 }
 
@@ -118,8 +128,6 @@ const CareerHistoryContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background-color: #747bff;
 `
 
 const DirectionLineBox = styled.div`
@@ -127,15 +135,13 @@ const DirectionLineBox = styled.div`
 
   width: ${props => props.width}px;
   height: 100%;
-
-  background-color: coral;
 `
 
 const DirectionLine = styled.div`
   position: absolute;
   width: 0px;
   height: 10px;
-  background-color: blue;
+  background-color: ${props => props.color};
   border-radius: 100px;
 
   top: 50%;
@@ -150,7 +156,7 @@ const DirectionLine = styled.div`
     content: "";
     width: 20px;
     height: 10px;
-    background-color: blue;
+    background-color: ${props => props.color};
     border-radius: 100px;
     right: 0px;
 
@@ -163,7 +169,7 @@ const DirectionLine = styled.div`
     content: "";
     width: 20px;
     height: 10px;
-    background-color: blue;
+    background-color: ${props => props.color};
     border-radius: 100px;
     right: 0px;
 
@@ -199,7 +205,7 @@ const ContentBoxWrapper = styled.div`
 
 const ContentBox = styled.div`
   position: relative;
-  
+
   width: ${props => props.width}px;
 
   height: 100%;
@@ -217,4 +223,17 @@ const ContentBox = styled.div`
 
   transition: width 1s linear;
   transition-delay: ${props => props.index}s;
+
+  overflow: hidden;
+`
+
+const TitleBox = styled.div`
+  width: 100%;
+  height: 30px;
+  background-color: yellow;
+`
+
+const TextBox = styled.div`
+  width: 100%;
+  background-color: skyblue;
 `
