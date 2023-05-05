@@ -2,7 +2,7 @@ import React, {createContext, useContext, useEffect, useRef, useState} from 'rea
 import styled from "@emotion/styled";
 
 const CONTENT_WIDTH = 400;
-const CONTENT_HEIGHT = 400;
+const CONTENT_HEIGHT = 300;
 
 const TEXT_BOX_WIDTH = 300;
 const TEXT_BOX_HEIGHT = 200;
@@ -95,7 +95,7 @@ const CareerHistoryTitle = (props) => {
     const {children} = props;
 
     return (
-        <TitleBox>
+        <TitleBox {...props}>
             {children}
         </TitleBox>
     )
@@ -105,7 +105,7 @@ const CareerHistoryText = (props) => {
     const {children} = props;
 
     return (
-        <TextBox>
+        <TextBox {...props}>
             {children}
         </TextBox>
     )
@@ -211,15 +211,15 @@ const ContentBox = styled.div`
   height: 100%;
 
   &:nth-of-type(even) {
-    background-color: red;
+    //background-color: red;
     top: 50%;
   }
 
   &:nth-of-type(odd) {
-    background-color: blue;
+    //background-color: blue;
   }
 
-  opacity: 0.5;
+  //opacity: 0.5;
 
   transition: width 1s linear;
   transition-delay: ${props => props.index}s;
@@ -230,10 +230,16 @@ const ContentBox = styled.div`
 const TitleBox = styled.div`
   width: 100%;
   height: 30px;
-  background-color: yellow;
+  //background-color: yellow;
+
+  display: flex;
+  align-items: center;
+
+  margin-top: ${props => props.mt}px;
 `
 
 const TextBox = styled.div`
   width: 100%;
-  background-color: skyblue;
+  margin-top: ${props=>props.mt}px;
+  //background-color: skyblue;
 `

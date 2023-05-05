@@ -27,32 +27,95 @@ const CareerContainer = () => {
                 <CareerHistory textColor={theme.text} lineColor={theme.button}>
                     <CareerHistory.Content>
                         <CareerHistory.Title>
-                            <CareerNormalText color={theme.main}>NAVER finanacial</CareerNormalText>
+                            <CareerNormalText color={theme.main} size={25}>NAVER finanacial</CareerNormalText>
                         </CareerHistory.Title>
                         <CareerHistory.Text>
-                            <CareerNormalText color={theme.main}>Intern</CareerNormalText>
+                            <CareerNormalText color={theme.main}>2021.01 ~ 2021.02 (인턴)</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text mt={20}>
+                            <CareerNormalText color={theme.main}>Backend developer</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text mt={5}>
+                            <CareerNormalText color={theme.main}>- Spring framework</CareerNormalText>
                         </CareerHistory.Text>
                         <CareerHistory.Text>
-                            <CareerNormalText color={theme.main}>Backend software developer</CareerNormalText>
+                            <CareerNormalText color={theme.main}>- Spring cloud gateway</CareerNormalText>
                         </CareerHistory.Text>
                         <CareerHistory.Text>
-                            <CareerNormalText color={theme.main}>Backend software developer</CareerNormalText>
+                            <CareerNormalText color={theme.main}>- MyBatis</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>- MariaDB</CareerNormalText>
                         </CareerHistory.Text>
                     </CareerHistory.Content>
 
                     <CareerHistory.Content>
-                        <CareerHistory.Title/>
-                        <CareerHistory.Text/>
+                        <CareerHistory.Title mt={10}>
+                            <CareerNormalText color={theme.main} size={25}>Kolon benit</CareerNormalText>
+                        </CareerHistory.Title>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>2021.04 ~ 2021.06 (인턴)</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text mt={20}>
+                            <CareerNormalText color={theme.main}>Frontend developer</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text mt={5}>
+                            <CareerNormalText color={theme.main}>- React</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>- Redux</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>- Chart js</CareerNormalText>
+                        </CareerHistory.Text>
                     </CareerHistory.Content>
 
                     <CareerHistory.Content>
-                        <CareerHistory.Title/>
-                        <CareerHistory.Text/>
+                        <CareerHistory.Title>
+                            <CareerNormalText color={theme.main} size={25}>Kolon benit</CareerNormalText>
+                        </CareerHistory.Title>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>2021.07 ~ 2022.02 (주임)</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text mt={20}>
+                            <CareerNormalText color={theme.main}>Software developer</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text mt={5}>
+                            <CareerNormalText color={theme.main}>- React</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>- Electron</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>- Spring framework</CareerNormalText>
+                        </CareerHistory.Text>
                     </CareerHistory.Content>
 
                     <CareerHistory.Content>
-                        <CareerHistory.Title/>
-                        <CareerHistory.Text/>
+                        <CareerHistory.Title mt={10}>
+                            <CareerNormalText color={theme.main} size={25}>Tmax tibero</CareerNormalText>
+                        </CareerHistory.Title>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>2022.03 ~ 재직중 (연구원)</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text mt={20}>
+                            <CareerNormalText color={theme.main}>Frontend developer</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text mt={5}>
+                            <CareerNormalText color={theme.main}>- React</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>- Mobx</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>- Chart js</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>- D3</CareerNormalText>
+                        </CareerHistory.Text>
+                        <CareerHistory.Text>
+                            <CareerNormalText color={theme.main}>- Docker</CareerNormalText>
+                        </CareerHistory.Text>
                     </CareerHistory.Content>
                 </CareerHistory>
             </TimeContentBox>
@@ -92,8 +155,6 @@ const TimeContentBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background-color: coral;
 `
 
 const CardContentBox = styled.div`
@@ -104,9 +165,6 @@ const CardContentBox = styled.div`
 
   display: flex;
   justify-content: center;
-
-  background-color: coral;
-
 `
 
 const CardContentScrollBox = styled.div`
@@ -126,9 +184,6 @@ const CardContent = styled(Card)`
   left: 50%;
   top: 100%;
   transform: translate(-50%);
-
-  //visibility: hidden;
-  //opacity: 0;
 
   &:nth-of-type(1) {
     position: static;
