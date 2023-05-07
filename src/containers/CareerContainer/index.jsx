@@ -202,3 +202,4 @@ const CardEndBox = styled.div`
 const CareerNormalText = styled(NormalText)`
   white-space: nowrap;
 `
+

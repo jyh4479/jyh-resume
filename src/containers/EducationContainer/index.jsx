@@ -7,7 +7,14 @@ import FlyingComponentBox from "@/components/ComponentAnimationBox/FlyingCompone
 import {RotateImage} from "@/components/Image";
 
 import SCHOOL from "@/assets/image/highSchool/school.png";
+import SCHOOL_NIGHT from "@/assets/image/highSchool/school-night.png";
 import DORMITORY from "@/assets/image/highSchool/dormitory.png";
+import GROUND from "@/assets/image/highSchool/ground.png";
+
+import MASCOT from "@/assets/image/university/mascot.png";
+import LIBRARY from "@/assets/image/university/library.png";
+import UNIVERSITY from "@/assets/image/university/university.png";
+import UNIVERSITY_NIGHT from "@/assets/image/university/university-night.png";
 
 const EducationContainer = (props) => {
 
@@ -30,8 +37,8 @@ const EducationContainer = (props) => {
                 <TopImageContentBox>
                     <RotateImage>
                         <RotateImage.Content src={SCHOOL} width={300} color={theme.button}/>
-                        <RotateImage.Content src={DORMITORY} width={300} color={theme.button}/>
-                        <RotateImage.Content src={SCHOOL} width={300} color={theme.button}/>
+                        <RotateImage.Content src={SCHOOL_NIGHT} width={300} color={theme.button}/>
+                        <RotateImage.Content src={GROUND} width={300} color={theme.button}/>
                         <RotateImage.Content src={DORMITORY} width={300} color={theme.button}/>
                     </RotateImage>
                 </TopImageContentBox>
@@ -52,10 +59,10 @@ const EducationContainer = (props) => {
                 </BottomTitleContentBox>
                 <BottomImageContentBox>
                     <RotateImage direction={"up"}>
-                        <RotateImage.Content src={SCHOOL} width={300} color={theme.button}/>
-                        <RotateImage.Content src={DORMITORY} width={300} color={theme.button}/>
-                        <RotateImage.Content src={SCHOOL} width={300} color={theme.button}/>
-                        <RotateImage.Content src={DORMITORY} width={300} color={theme.button}/>
+                        <RotateImage.Content src={UNIVERSITY} width={300} color={theme.button}/>
+                        <RotateImage.Content src={UNIVERSITY_NIGHT} width={300} color={theme.button}/>
+                        <RotateImage.Content src={LIBRARY} width={300} color={theme.button}/>
+                        <RotateImage.Content src={MASCOT} width={300} color={theme.button}/>
                     </RotateImage>
                 </BottomImageContentBox>
             </ContentBox>

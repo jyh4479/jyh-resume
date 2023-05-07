@@ -11,6 +11,15 @@ const RotateImage = (props) => {
 
     const parent = useRef();
 
+    useEffect(() => {
+        const domObserver = new IntersectionObserver(e => {
+            e.forEach(dom => {
+                if (dom.isIntersecting) setOpen(true);
+            })
+        });
+        domObserver.observe(parent.current);
+    }, [])
+
     return (
         <RotateImageContext.Provider value={{open, setOpen, parent, direction}}>
             <ImageContentBox ref={parent}>
