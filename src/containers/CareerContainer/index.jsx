@@ -9,6 +9,12 @@ import {useCardScrollEvent} from "@/containers/CareerContainer/hooks/useCardScro
 import {useTitleScrollEvent} from "@/containers/CareerContainer/hooks/useTitleScrollEvent.js";
 import {useBackGroundScrollEvent} from "@/containers/CareerContainer/hooks/useBackGroundScrollEvent.js";
 
+import MSA_SERVICE from "@/assets/image/task/msa-server.png";
+import CALL_SERVICE from "@/assets/image/task/call-service.png";
+import MONITORING_DASHBOARD from "@/assets/image/task/monitoring-service-dashboard.png";
+import MONITORING_REALTIME from "@/assets/image/task/monitoring-service-realtime.png";
+
+
 const CareerContainer = () => {
 
     const theme = useRecoilValue(themeState);
@@ -122,16 +128,48 @@ const CareerContainer = () => {
             <CardContentBox>
                 <CardContentScrollBox ref={cardContainer}>
                     <BounceText size={30} ref={cardContainerTitle}>
-                        Career card
+                        Task card
                     </BounceText>
                     <CardContent ref={el => cardBoxRefs.current[0] = el}>
-                        123
+                        <Card.Header>
+                            <NormalText color={theme.main}>Spring cloud gateway 기반 MSA 서버 구축</NormalText>
+                        </Card.Header>
+                        <Card.Body>
+                            <ImageSpace>
+                                <Card.Image src={MSA_SERVICE} width={500}/>
+                            </ImageSpace>
+                        </Card.Body>
+                        <Card.Footer>
+
+                        </Card.Footer>
                     </CardContent>
                     <CardContent ref={el => cardBoxRefs.current[1] = el}>
-                        456
+                        <Card.Header>
+                            <NormalText color={theme.main}>Cloud 사용량 조회 페이지 및 사내 전화 서비스 개발</NormalText>
+                        </Card.Header>
+                        <Card.Body>
+                            <ImageSpace>
+                                <Card.Image src={CALL_SERVICE} width={150}/>
+                            </ImageSpace>
+                            <TextSpace>123</TextSpace>
+                        </Card.Body>
+                        <Card.Footer>
+
+                        </Card.Footer>
                     </CardContent>
                     <CardContent ref={el => cardBoxRefs.current[2] = el}>
-                        789
+                        <Card.Header>
+                            <NormalText color={theme.main}>자사 DB 모니터링 서비스 front end 개발 및 배포</NormalText>
+                        </Card.Header>
+                        <Card.Body>
+                            <ImageSpace>
+                                <Card.Image src={MONITORING_DASHBOARD} width={280}/>
+                                <Card.Image src={MONITORING_REALTIME} width={280}/>
+                            </ImageSpace>
+                        </Card.Body>
+                        <Card.Footer>
+
+                        </Card.Footer>
                     </CardContent>
                 </CardContentScrollBox>
             </CardContentBox>
@@ -202,4 +240,11 @@ const CardEndBox = styled.div`
 const CareerNormalText = styled(NormalText)`
   white-space: nowrap;
 `
+
+const ImageSpace = styled.div`
+`;
+
+const TextSpace = styled.div`
+    display: flex;
+`;
 
