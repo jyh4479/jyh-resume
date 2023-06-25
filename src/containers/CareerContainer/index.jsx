@@ -11,6 +11,8 @@ import {useBackGroundScrollEvent} from "@/containers/CareerContainer/hooks/useBa
 
 import MSA_SERVICE from "@/assets/image/task/msa-server.png";
 import CALL_SERVICE from "@/assets/image/task/call-service.png";
+import CALL_SERVICE_NUMBER from "@/assets/image/task/call-service-number.png";
+import CALL_SERVICE_SETTING from "@/assets/image/task/call-service-setting.png";
 import MONITORING_DASHBOARD from "@/assets/image/task/monitoring-service-dashboard.png";
 import MONITORING_REALTIME from "@/assets/image/task/monitoring-service-realtime.png";
 
@@ -150,11 +152,15 @@ const CareerContainer = () => {
                         <Card.Body>
                             <ImageSpace>
                                 <Card.Image src={CALL_SERVICE} width={150}/>
+                                <Card.Image src={CALL_SERVICE_NUMBER} width={150}/>
+                                <Card.Image src={CALL_SERVICE_SETTING} width={150}/>
                             </ImageSpace>
                             <TextSpace>123</TextSpace>
                         </Card.Body>
                         <Card.Footer>
-
+                            <NormalText color={theme.main}
+                                        onClick={() => location.href = 'https://octagonal-hare-a72.notion.site/Kolon-Benit-0445f1857231424eb1e2f37613c74673?pvs=4'}>프로젝트
+                                상세 설명</NormalText>
                         </Card.Footer>
                     </CardContent>
                     <CardContent ref={el => cardBoxRefs.current[2] = el}>
@@ -245,6 +251,6 @@ const ImageSpace = styled.div`
 `;
 
 const TextSpace = styled.div`
-    display: flex;
+  display: flex;
 `;
 
