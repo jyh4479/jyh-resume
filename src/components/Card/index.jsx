@@ -40,7 +40,6 @@ const CardFooter = (props) => {
     const {children} = props;
 
     return <FooterStyle>{children}</FooterStyle>
-
 }
 
 Card.Header = CardHeader;
@@ -84,6 +83,10 @@ const FooterStyle = styled.div`
   background-color: yellow;
   width: 100%;
   height: 10%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const ImageStyle = styled.img`

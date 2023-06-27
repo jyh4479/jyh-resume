@@ -29,6 +29,17 @@ const CareerContainer = () => {
     useCardScrollEvent(cardContainer, cardBoxRefs);
     useTitleScrollEvent(cardContainer, cardContainerTitle);
 
+    const msaServerLink = () => {
+        window.open("https://www.notion.so/Naver-Financial-Intern-7284b1e64ebb4ba3ae18f5acab52598b");
+    }
+    const callServiceLink = () => {
+        window.open("https://octagonal-hare-a72.notion.site/Kolon-Benit-0445f1857231424eb1e2f37613c74673?pvs=4");
+    }
+    const monitoringServiceLink = () => {
+        window.open("https://www.notion.so/Tmax-Tibero-962af2bc6c4b4873b06b175b4bfc4bee");
+    }
+
+
     return (
         <ContainerLayout color={theme.backGround}>
             <TimeContentBox>
@@ -142,7 +153,7 @@ const CareerContainer = () => {
                             </ImageSpace>
                         </Card.Body>
                         <Card.Footer>
-
+                            <CursorNormalText color={theme.main} onClick={() => msaServerLink()}>프로젝트 상세 설명</CursorNormalText>
                         </Card.Footer>
                     </CardContent>
                     <CardContent ref={el => cardBoxRefs.current[1] = el}>
@@ -158,9 +169,7 @@ const CareerContainer = () => {
                             <TextSpace>123</TextSpace>
                         </Card.Body>
                         <Card.Footer>
-                            <NormalText color={theme.main}
-                                        onClick={() => location.href = 'https://octagonal-hare-a72.notion.site/Kolon-Benit-0445f1857231424eb1e2f37613c74673?pvs=4'}>프로젝트
-                                상세 설명</NormalText>
+                            <CursorNormalText color={theme.main} onClick={() => callServiceLink()}>프로젝트 상세 설명</CursorNormalText>
                         </Card.Footer>
                     </CardContent>
                     <CardContent ref={el => cardBoxRefs.current[2] = el}>
@@ -174,7 +183,7 @@ const CareerContainer = () => {
                             </ImageSpace>
                         </Card.Body>
                         <Card.Footer>
-
+                            <CursorNormalText color={theme.main} onClick={() => monitoringServiceLink()}>프로젝트 상세 설명</CursorNormalText>
                         </Card.Footer>
                     </CardContent>
                 </CardContentScrollBox>
@@ -253,4 +262,12 @@ const ImageSpace = styled.div`
 const TextSpace = styled.div`
   display: flex;
 `;
+
+const CursorNormalText = styled(NormalText)`
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.95);
+  }
+`
 
