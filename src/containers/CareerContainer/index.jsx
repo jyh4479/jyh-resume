@@ -151,6 +151,12 @@ const CareerContainer = () => {
                             <ImageSpace>
                                 <Card.Image src={MSA_SERVICE} width={500}/>
                             </ImageSpace>
+                            <TextSpace>
+                                1. gateway를 사용한 사용자 인증, 인가 및 라우팅 구현
+                            </TextSpace>
+                            <TextSpace>
+                                2. Eureka를 사용한 service discovery 구축으로 고가용성 테스트
+                            </TextSpace>
                         </Card.Body>
                         <Card.Footer>
                             <CursorNormalText color={theme.main} onClick={() => msaServerLink()}>프로젝트 상세 설명</CursorNormalText>
@@ -166,7 +172,15 @@ const CareerContainer = () => {
                                 <Card.Image src={CALL_SERVICE_NUMBER} width={150}/>
                                 <Card.Image src={CALL_SERVICE_SETTING} width={150}/>
                             </ImageSpace>
-                            <TextSpace>123</TextSpace>
+                            <TextSpace>
+                                1. React를 사용한 cloud 사용량 조회 페이지 재구축
+                            </TextSpace>
+                            <TextSpace>
+                                2. 사내 전화 서비스에 필요한 컴포넌트 개발
+                            </TextSpace>
+                            <TextSpace>
+                                3. Electron 기반 back-end 이벤트에 따라 라우팅할 수 있도록 비즈니스 로직 구현
+                            </TextSpace>
                         </Card.Body>
                         <Card.Footer>
                             <CursorNormalText color={theme.main} onClick={() => callServiceLink()}>프로젝트 상세 설명</CursorNormalText>
@@ -181,6 +195,15 @@ const CareerContainer = () => {
                                 <Card.Image src={MONITORING_DASHBOARD} width={280}/>
                                 <Card.Image src={MONITORING_REALTIME} width={280}/>
                             </ImageSpace>
+                            <TextSpace>
+                                1. DB 모니터링에 필요한 페이지 및 컴포넌트 개발
+                            </TextSpace>
+                            <TextSpace>
+                                2. Client 배포 및 자동화
+                            </TextSpace>
+                            <TextSpace>
+                                3. Realtime chart 성능 개선 및 json 포맷 개선
+                            </TextSpace>
                         </Card.Body>
                         <Card.Footer>
                             <CursorNormalText color={theme.main} onClick={() => monitoringServiceLink()}>프로젝트 상세 설명</CursorNormalText>
@@ -227,8 +250,6 @@ const CardContentScrollBox = styled.div`
 
   width: 50%;
   height: 5000px;
-
-  background-color: blanchedalmond;
 `
 
 const CardContent = styled(Card)`
@@ -248,8 +269,6 @@ const CardContent = styled(Card)`
 const CardEndBox = styled.div`
   width: 100%;
   height: 100vh;
-
-  background-color: yellow;
 `
 
 const CareerNormalText = styled(NormalText)`
@@ -260,7 +279,7 @@ const ImageSpace = styled.div`
 `;
 
 const TextSpace = styled.div`
-  display: flex;
+    margin: 5px;
 `;
 
 const CursorNormalText = styled(NormalText)`

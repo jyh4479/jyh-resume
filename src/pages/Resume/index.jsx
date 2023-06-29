@@ -1,6 +1,9 @@
 import React from 'react';
 import {EducationContainer, PageContainer, TitleTextContainer} from "@/containers/index.js";
 import CareerContainer from "@/containers/CareerContainer/index.jsx";
+import BounceText from "../../components/Text/BounceText/index.jsx";
+import {useRecoilValue} from "recoil";
+import {themeState} from "@/stores/Theme/index.js";
 
 // TODO - 아래 내용을 기반으로 회사에서 진행했던 프로젝트와 개선 내용을 정리하기
 // TODO: 1. 성능개선에 대한 내용 (차트에 대한 내용 + JS 전처리 로직을 가볍게하기 위한 JSON 형식에 대한 내용) (Apex, Chartjs, D3)
@@ -14,13 +17,23 @@ import CareerContainer from "@/containers/CareerContainer/index.jsx";
 
 const Resume = (props) => {
 
+    const theme = useRecoilValue(themeState);
+
     return (
         <PageContainer>
             <TitleTextContainer/>
             {/*<LoadingContainer>*/}
             <EducationContainer/>
             <CareerContainer/>
-            <div style={{width: "100vw", height: "100vh", background: "red"}}/>
+            <div style={{
+                width: "100vw",
+                height: "100vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <BounceText size={90} color={theme.main}>{"제 이력서 더 고도화 해볼게요...^^"}</BounceText>
+            </div>
             {/*</LoadingContainer>*/}
         </PageContainer>
     )

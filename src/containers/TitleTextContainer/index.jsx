@@ -6,7 +6,7 @@ import BounceText from "@/components/Text/BounceText";
 
 const TitleTextContainer = (props) => {
 
-    const [title, setTitle] = useState("Software developer!");
+    const [title, setTitle] = useState("Software developer JYH!");
     const theme = useRecoilValue(themeState);
 
     return (

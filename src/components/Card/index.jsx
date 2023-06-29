@@ -69,7 +69,6 @@ const HeaderStyle = styled.div`
 `
 
 const BodyStyle = styled.div`
-  background-color: skyblue;
   width: 100%;
   height: 80%;
 
@@ -80,7 +79,6 @@ const BodyStyle = styled.div`
 `
 
 const FooterStyle = styled.div`
-  background-color: yellow;
   width: 100%;
   height: 10%;
 
