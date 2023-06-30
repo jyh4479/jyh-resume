@@ -10,7 +10,7 @@
     "preview": "vite preview",
 
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "homepage": "https://jyh4479.github.io/jyh-resume/",
   "dependencies": {
