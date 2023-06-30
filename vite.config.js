@@ -5,6 +5,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: '/jyh-resume/', //git pages 배포를 위한 설정
     plugins: [react()],
     resolve: {
         alias: [
