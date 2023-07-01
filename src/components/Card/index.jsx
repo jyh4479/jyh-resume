@@ -54,7 +54,7 @@ const CardBox = styled.div`
   width: 600px;
   height: 700px;
 
-  border: 5px solid #000000;
+  border: 5px solid ${props => props.lineColor ? props.lineColor : '#000000'};
   border-radius: 25px;
   background-color: #ffffff;
 `

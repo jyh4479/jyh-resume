@@ -140,10 +140,10 @@ const CareerContainer = () => {
             </TimeContentBox>
             <CardContentBox>
                 <CardContentScrollBox ref={cardContainer}>
-                    <BounceText size={30} ref={cardContainerTitle}>
+                    <BounceText size={30} color={theme.main} ref={cardContainerTitle}>
                         Task card
                     </BounceText>
-                    <CardContent ref={el => cardBoxRefs.current[0] = el}>
+                    <CardContent ref={el => cardBoxRefs.current[0] = el} lineColor={theme.button}>
                         <Card.Header>
                             <NormalText color={theme.main}>Spring cloud gateway 기반 MSA 서버 구축</NormalText>
                         </Card.Header>
@@ -159,10 +159,11 @@ const CareerContainer = () => {
                             </TextSpace>
                         </Card.Body>
                         <Card.Footer>
-                            <CursorNormalText color={theme.main} onClick={() => msaServerLink()}>프로젝트 상세 설명</CursorNormalText>
+                            <CursorNormalText color={theme.main} onClick={() => msaServerLink()}>프로젝트 상세
+                                설명</CursorNormalText>
                         </Card.Footer>
                     </CardContent>
-                    <CardContent ref={el => cardBoxRefs.current[1] = el}>
+                    <CardContent ref={el => cardBoxRefs.current[1] = el} lineColor={theme.button}>
                         <Card.Header>
                             <NormalText color={theme.main}>Cloud 사용량 조회 페이지 및 사내 전화 서비스 개발</NormalText>
                         </Card.Header>
@@ -183,10 +184,11 @@ const CareerContainer = () => {
                             </TextSpace>
                         </Card.Body>
                         <Card.Footer>
-                            <CursorNormalText color={theme.main} onClick={() => callServiceLink()}>프로젝트 상세 설명</CursorNormalText>
+                            <CursorNormalText color={theme.main} onClick={() => callServiceLink()}>프로젝트 상세
+                                설명</CursorNormalText>
                         </Card.Footer>
                     </CardContent>
-                    <CardContent ref={el => cardBoxRefs.current[2] = el}>
+                    <CardContent ref={el => cardBoxRefs.current[2] = el} lineColor={theme.button}>
                         <Card.Header>
                             <NormalText color={theme.main}>자사 DB 모니터링 서비스 front end 개발 및 배포</NormalText>
                         </Card.Header>
@@ -206,7 +208,8 @@ const CareerContainer = () => {
                             </TextSpace>
                         </Card.Body>
                         <Card.Footer>
-                            <CursorNormalText color={theme.main} onClick={() => monitoringServiceLink()}>프로젝트 상세 설명</CursorNormalText>
+                            <CursorNormalText color={theme.main} onClick={() => monitoringServiceLink()}>프로젝트 상세
+                                설명</CursorNormalText>
                         </Card.Footer>
                     </CardContent>
                 </CardContentScrollBox>
@@ -279,7 +282,7 @@ const ImageSpace = styled.div`
 `;
 
 const TextSpace = styled.div`
-    margin: 5px;
+  margin: 5px;
 `;
 
 const CursorNormalText = styled(NormalText)`
