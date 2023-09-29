@@ -1,9 +1,14 @@
 import React from 'react';
-import {EducationContainer, PageContainer, TitleTextContainer} from "@/containers/index.js";
-import CareerContainer from "@/containers/CareerContainer/index.jsx";
-import BounceText from "../../components/Text/BounceText/index.jsx";
+import {
+    EducationContainer,
+    PageContainer,
+    TitleTextContainer,
+    CareerContainer,
+    JayComponentContainer
+} from "@/containers";
+import BounceText from "@/components/Text/BounceText";
 import {useRecoilValue} from "recoil";
-import {themeState} from "@/stores/Theme/index.js";
+import {themeState} from "@/stores/Theme";
 
 // TODO - 아래 내용을 기반으로 회사에서 진행했던 프로젝트와 개선 내용을 정리하기
 // TODO: 1. 성능개선에 대한 내용 (차트에 대한 내용 + JS 전처리 로직을 가볍게하기 위한 JSON 형식에 대한 내용) (Apex, Chartjs, D3)
@@ -15,6 +20,7 @@ import {themeState} from "@/stores/Theme/index.js";
 // TODO: 7. 평문의 login data 해싱에 대한 프로세스 고민
 // TODO: 8. Token과 관련된 로직 개선에 대한 문제 (token refresh 로직 등)
 
+
 const Resume = (props) => {
 
     const theme = useRecoilValue(themeState);
@@ -25,6 +31,7 @@ const Resume = (props) => {
             {/*<LoadingContainer>*/}
             <EducationContainer/>
             <CareerContainer/>
+            <JayComponentContainer/>
             <div style={{
                 width: "100vw",
                 height: "100vh",
